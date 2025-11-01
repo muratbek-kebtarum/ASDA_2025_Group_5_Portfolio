@@ -209,3 +209,4 @@ __marimo__/
 .DS_Store
 ..additional_material/.DS_Store
 ..nottebooks/.ipynb_checkpoints
+.ipynb_checkpoints
