@@ -12,7 +12,7 @@
 | Authors                      |Leuphana University Lüneburg|
 | Number of entries            |192          |
 | Number of features/variables |10       |
-| Format file (.csv,.txt, etc) |xlsx     |
+| Format file (.csv,.txt, etc) |.xlsx     |
 
 ### 2. Dataset Structure (of the clean version)
 
