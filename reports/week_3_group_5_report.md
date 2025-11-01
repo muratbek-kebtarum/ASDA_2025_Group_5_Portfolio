@@ -8,11 +8,11 @@
 
 | Item                     | Description |
 |--------------------------|-------------|
-| Dataset name             |             |
-| Authors                  |             |
-| Number of entries        |             |
-| Number of features/variables |         |
-| Format file (.csv,.txt, etc) |       |
+| Dataset name                 |LegoDatabase |
+| Authors                      |Leuphana University Lüneburg|
+| Number of entries            |192          |
+| Number of features/variables |10       |
+| Format file (.csv,.txt, etc) |xlsx     |
 
 ### 2. Dataset Structure (of the clean version)
 
