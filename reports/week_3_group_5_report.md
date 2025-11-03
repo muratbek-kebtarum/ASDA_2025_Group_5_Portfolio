@@ -6,11 +6,11 @@
 
 | Item                     | Description |
 |--------------------------|-------------|
-| Dataset name                 | Lego Dataset |
-| Authors                      | Group 1-5 |
-| Number of entries            | 189 |
-| Number of features/variables | 10 |
-| Format file (.csv,.txt, etc) | .xlsx |
+| Dataset name                 | Lego Dataset                  |
+| Authors                      |Leuphana University of Lüneburg|
+| Number of entries            | 189                           |
+| Number of features/variables | 10                            |
+| Format file (.csv,.txt, etc) | .xlsx                         |
 
 *This dataset contains detailed information about Lego pieces, including color, type, shape, size, and material properties.*
 
