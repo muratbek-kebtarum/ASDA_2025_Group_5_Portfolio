@@ -7,7 +7,7 @@
 | Item                     | Description |
 |--------------------------|-------------|
 | Dataset name                 | Lego Dataset                  |
-| Authors                      |Leuphana University of Lüneburg|
+| Authors                      |Leuphana University, Lüneburg|
 | Number of entries            | 189                           |
 | Number of features/variables | 10                            |
 | Format file (.csv,.txt, etc) | .xlsx                         |
@@ -25,7 +25,7 @@
 | is duplo? | bool | Indicates if the brick is Duplo | 2 | True, False |
 | size type | object | Type of brick size category | 3 | brick, plate |
 | base shape | object | Shape of the brick base | 8 | rectangle, square |
-| base dimensions | object | Stud dimension of brick base (W × L) | 22 | 2X4, 2X2, 1X4 |
+| base dimensions | object | Stud dimension of brick base (W × L) | 22 | 2*4, 2*2, 1*4 |
 | number of studs | int64 | Count of studs on top | 10 | 4, 8, 16 |
 | has slope? | bool | Whether the brick has a slope | 2 | True, False |
 | slope degree | float64 | Slope angle for sloped bricks | 3 | 33, 45, 60 |
@@ -34,21 +34,20 @@
 
 
 ---
+## 3. Descriptive Statistics
 
-### 3. Descriptive statistics
+**Numeric Columns**
 
-**Numeric columns**
-
-| | id | number of studs | slope degree | in stock |
-|:---|:---|:---|:---|:---|
-| **count** | 189.000000 | 189.000000 | 189.000000 | 189.000000 |
-| **mean** | 95.000000 | 5.375661 | 1.198413 | 1.185185 |
-| **std** | 54.743037 | 3.525547 | 7.995963 | 0.457850 |
-| **min** | 1.000000 | 0.000000 | 0.000000 | 1.000000 |
-| **25%** | 48.000000 | 2.000000 | 0.000000 | 1.000000 |
-| **50%** | 95.000000 | 4.000000 | 0.000000 | 1.000000 |
-| **75%** | 142.000000 | 8.000000 | 0.000000 | 1.000000 |
-| **max** | 189.000000 | 24.000000 | 45.000000 | 3.000000 |
+|        | id      | number of studs | slope degree | in stock |
+|:-------|:--------|:----------------|:--------------|:----------|
+| **count** | 189.00 | 189.00 | 24.00 | 189.00 |
+| **mean**  | 95.00  | 4.80  | 43.12 | 1.08 |
+| **std**   | 54.70  | 5.09  | 6.73  | 0.31 |
+| **min**   | 1.00   | 0.00  | 15.00 | 1.00 |
+| **25%**   | 48.00  | 2.00  | 45.00 | 1.00 |
+| **50%**   | 95.00  | 4.00  | 45.00 | 1.00 |
+| **75%**   | 142.00 | 6.00  | 45.00 | 1.00 |
+| **max**   | 189.00 | 24.00 | 45.00 | 3.00 |
 
 ---
 ### 4. Exploratory plots
