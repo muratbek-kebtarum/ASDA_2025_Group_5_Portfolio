@@ -25,6 +25,7 @@
 | is duplo? | bool | Indicates if the brick is Duplo | 2 | True, False |
 | size type | object | Type of brick size category | 3 | brick, plate |
 | base shape | object | Shape of the brick base | 8 | rectangle, square |
+
 | base dimensions | object | Stud dimension of brick base (W × L) | 22 | 2X4, 2X2, 1X4 |
 | number of studs | int64 | Count of studs on top | 10 | 4, 8, 16 |
 | has slope? | bool | Whether the brick has a slope | 2 | True, False |
