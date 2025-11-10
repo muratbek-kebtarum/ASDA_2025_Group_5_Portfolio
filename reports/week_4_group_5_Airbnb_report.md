@@ -103,36 +103,50 @@ Below are all visualizations produced for the Airbnb analysis. Each figure is sh
 	<img src="../additional_material/visualizations/price_distribution_weekdays_vs_weekends.png" alt="Price distribution weekdays vs weekends" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price distribution: weekdays vs weekends</strong> — Weekends show a heavier right tail; dynamic pricing likely in effect.</figcaption>
 </figure>
-
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 <figure style="flex:1 1 30%;margin:0">
 	<img src="../additional_material/visualizations/log_price_distribution_weekdays_vs_weekends.png" alt="Log price distribution weekdays vs weekends" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Log price distribution</strong> — Log-transform reduces skew; useful for regression modelling.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 
 <figure style="flex:1 1 30%;margin:0">
 	<img src="../additional_material/visualizations/price_weekday_weekend_distribution.png" alt="Price weekday vs weekend distribution" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price: weekday vs weekend</strong> — Another view confirming weekend premium.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/price_entirehome_vs_privateroom.png" alt="Price entire home vs private room" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price by room type</strong> — Entire homes command higher prices than private rooms.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/log_price_entirehome_vs_privateroom.png" alt="Log price entire home vs private room" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Log price by room type</strong> — Log view reduces skew and highlights median differences.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/bedrooms_price_boxplot.png" alt="Bedrooms price boxplot" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Bedrooms vs price (boxplot)</strong> — Higher bedroom counts trend with higher prices, with large variance.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/log_bedrooms_price_boxplot.png" alt="Log bedrooms price boxplot" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Log bedrooms vs price</strong> — Log transform clarifies central tendency across bedroom counts.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 
 
@@ -141,55 +155,78 @@ Below are all visualizations produced for the Airbnb analysis. Each figure is sh
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price: Superhosts vs Normal hosts</strong> — Superhosts have a modest price premium on average.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/log_price_superhosts_vs_normalhosts.png" alt="Log price superhosts vs normalhosts" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Log price by host type</strong> — Log view reduces outlier impact when comparing host types.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/cleanliness_superhosts_vs_normalhosts.png" alt="Cleanliness superhosts vs normalhosts" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Cleanliness ratings</strong> — Superhosts have slightly higher cleanliness scores.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/cleanliness_boxplot_superhosts_vs_normalhosts.png" alt="Cleanliness boxplot" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Cleanliness boxplot</strong> — Boxplot shows distribution and outliers by host type.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/guest_cleanliness_distribution.png" alt="Guest cleanliness distribution" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Guest cleanliness distribution</strong> — Distribution of cleanliness-related scores across listings.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/distance_city_center_superhosts_vs_normalhosts.png" alt="Distance city center" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Distance to city center</strong> — Location spread for host types; distance alone isn't fully explanatory.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/distance_metro_superhosts_vs_normalhosts.png" alt="Distance metro" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Distance to metro</strong> — Accessibility may influence pricing and reviews.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/person_capacity_distribution.png" alt="Person capacity distribution" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Person capacity</strong> — Most listings accommodate 2–4 guests.</figcaption>
 </figure>
 
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/roomtype_superhost_barplot.png" alt="Room type superhost barplot" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
-	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Room type by host status</strong> — Distribution of room types among Superhosts vs others.</figcaption>
+		<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Room type by host status</strong> — Distribution of room types among Superhosts vs others.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
+</figure>
+</br>
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/price_weekdays_amsterdam_vs_berlin.png" alt="Price weekdays Amsterdam vs Berlin" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price: Amsterdam vs Berlin</strong> — City-level comparison on weekdays.</figcaption>
 </figure>
-
+</br>
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/price_weekdays_paris_vs_rome.png" alt="Price weekdays Paris vs Rome" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
 	<figcaption style="font-size:0.9em;margin-top:0.4rem"><strong>Price: Paris vs Rome</strong> — City comparison highlighting median differences.</figcaption>
 </figure>
+
+<hr style="border:none;border-top:2px solid #ddd;margin:1.5rem 0;width:80%;">
 
 <figure style="flex:1 1 30%;margin-top:1rem">
 	<img src="../additional_material/visualizations/price_weekdays_london_vs_barcelona.png" alt="Price weekdays London vs Barcelona" style="width:100%;height:auto;border:1px solid #ddd;border-radius:6px">
