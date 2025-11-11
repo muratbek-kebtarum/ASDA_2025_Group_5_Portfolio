@@ -49,8 +49,8 @@
 | :---                       | :---                                    | :---                                                      | :---                                                     |
 | Inconsistent column labeling| realSum, sheet_name, room_shared, room_private, multi, biz | Different column names for same concepts across sheets     | Renamed columns (e.g., realSum to Price), unified categories |
 | Wrong data types           | room_shared, room_private, host_is_superhost | Boolean columns sometimes as int or string                 | Converted to consistent boolean type                      |
-| Missing values             | Various (e.g., cleanliness_rating, metro_dist) | Some columns have missing values                          | Used pandas functions to handle or drop missing values    |
-| Duplicates                 | All columns                             | Duplicate rows present in merged dataframe                 | Used pandas drop_duplicates()                             |
+| Missing values             | - | -                          | -    |
+| Duplicates                 | -                             | -                 | -                             |
 | Inconsistent categories    | room_type, host_listing_category         | Multiple columns for room type, host listing category      | Combined into single categorical columns                  |
 | Other                      | First column (index), city/country mapping | Unnecessary index column, missing city/country info        | Dropped first column, mapped city to country              |
 
