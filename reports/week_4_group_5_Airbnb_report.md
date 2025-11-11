@@ -2,10 +2,10 @@
 
 | Name | Contribution |
 | :--- | :--- |
-|Murat|Data cleaning, data visualization, data analysis, final report assembly|
+|Murat|Data cleaning, final report assembly|
 |Muhammad Ilyas|Contributed initial drafts for data cleaning and analysis.  Set up the initial repository|
-|Person 3|No contributions submitted|
-|Person 4|No contributions submitted|
+|Viktoria |Data visualization|
+|Akash |Data analysis|
 
 ---
 
