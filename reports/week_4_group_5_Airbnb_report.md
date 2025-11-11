@@ -2,10 +2,10 @@
 
 | Name | Contribution |
 | :--- | :--- |
-|Murat |Data cleaning, Analyzing, Visualizations |
-| | |
-| | |
-| | |
+|Murat|Data cleaning, data visualization, data analysis, final report assembly|
+|Muhammad Ilyas|Contributed initial drafts for data cleaning and analysis.  Set up the initial repository|
+|Person 3|No contributions submitted|
+|Person 4|No contributions submitted|
 
 ---
 
@@ -19,7 +19,7 @@
 | Format file (.csv, .txt, etc) | .xlsx|
 | Authors of the dataset | -|
 | Source (name) | Google sheets|
-| Source (link) | https://docs.google.com/spreadsheets/d/1ecopK6oyyb4d_7-QLrCr8YlgFrCetHU7-VQfnYej7JY/edit?gid=1813557111#gid=1813557111|
+| Source (link) | [Airbnb Dataset](https://docs.google.com/spreadsheets/d/1ecopK6oyyb4d_7-QLrCr8YlgFrCetHU7-VQfnYej7JY/edit?gid=1813557111#gid=1813557111)|
 
 ---
 
