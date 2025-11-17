@@ -119,4 +119,22 @@
 
 ## 5. Analysis - Research question
 
-*(Content for analysis goes here)*
+#### Human Well-being: Life Expectancy at Birth
+
+Our analysis reveals a striking, stepwise stratification in human longevity based on national income. An Analysis of Variance (ANOVA) confirmed highly significant differences between groups ($F(3, 183) = 106.9, p < 0.001$).
+
+Post-hoc analysis (Tukey HSD) demonstrates that these disparities exist at every level of development; every income group is statistically distinct from the others. The disparity is most profound at the extremes: **individuals in High-Income countries live, on average, 17.5 years longer than those in Low-Income countries.**
+
+Notably, the "development ladder" yields consistent gains: moving from Low to Lower-Middle income is associated with a **5.3-year increase** in life expectancy, suggesting that even early-stage economic development yields major health dividends.
+
+> **Methodological Note:** Levene’s test indicated unequal variances between groups ($p=0.02$), reflecting greater variability in outcomes within lower-income nations compared to the consistently high outcomes in wealthy nations.
+
+![Boxplot](../additional_material/visualizations/week5/Boxplot.png)
+---
+<br>
+
+![Boxplot](../additional_material/visualizations/week5/Histogram.png)
+---
+<br>
+
+![Boxplot](../additional_material/visualizations/week5/Q-QPlot.png)
