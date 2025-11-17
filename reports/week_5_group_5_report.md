@@ -4,7 +4,7 @@
 | :---        | :---                                             |
 | Ahmed       | Data Cleaning & Group Comparison (CO2 Emissions and GDP) |
 | Akash       |                                                 |
-| Murat       |                                                 |
+| Murat       | Report assembly, visualization, group Comparison (Life Expectancy at Birth)   |
 | Muhammad Ilyas |                                              |
 | Viktoria    |                                                 |
 
