@@ -1,12 +1,12 @@
 ## 0. Authors of the report
 
-| Name | Contribution |
-| :--- | :--- |
-|Ahmed||
-|Akash ||
-|Murat||
-|Muhammad Ilyas||
-|Viktoria ||
+| Name        | Contribution                                      |
+| :---        | :---                                             |
+| Ahmed       | Data Cleaning & Group Comparison (CO2 Emissions and GDP) |
+| Akash       |                                                 |
+| Murat       |                                                 |
+| Muhammad Ilyas |                                              |
+| Viktoria    |                                                 |
 
 
 ---
@@ -65,14 +65,14 @@
 
 ## Data cleaning
 
-| Issue                      | Names of Columns affected                | Description of the Issue                                   | Action Taken                                              |
-| :---                       | :---                                    | :---                                                      | :---                                                     |
-| Inconsistent column labeling|  |      |  |
-| Wrong data types           |  |            |                       |
-| Missing values             |  |                           |     |
-| Duplicates                 |                              |                 |                              |
-| Inconsistent categories    |          |       |                   |
-| Other                      |  |         |               |
+| Issue                        | Names of Columns affected                                                                                                                                               | Description of the Issue                                            | Action Taken                                         |
+| :---                         | :---                                                                                                                                                                   | :---                                                                | :---                                                |
+| Inconsistent column labeling | `individuals_using_internet%`, `military_expenditure%`, `government_expenditure_on_education%`, `government_health_expenditure%`, `forest_land%`, `agricultural_land%` | Column names contained `%` signs, which is inconsistent with other columns | Removed `%` from column names to standardize naming |
+| Inconsistent categories      | `country`                                                                                                                                                               | Column contained non-country entries like 'World', 'European Union', 'Arab World', 'South Asia' and some country names were inconsistent | Corrected country names and removed non-country entries |
+| Wrong data types              | `date`, `income_group`, `continent`                                                                                                                                     | `date` was not in datetime format; `income_group` and `continent` were not categorical | Converted `date` to datetime type; converted `income_group` and `continent` to categorical type |
+| Missing values                | `electric_power_consumption`, `multidimensional_poverty_headcount_ratio_percent`, `risk_premium_on_lending`, `time_to_get_operation_license`, `central_goverment_debt_percent`, `gini_index`, `real_interest_rate`, `research_and_development_expenditure_percent`, `lending_category`, `human_capital_index`, `expense_percent`, `tax_revenue_percent`, `avg_precipitation` | These columns have more than 30% missing values        | Columns with >30% missing values were removed or flagged for special handling |
+| Missing values                | `co2_emission`, `gdp`                                                                                                                                                 | These columns had missing values                                   | Filled missing values with the mean of the respective `income_group` |
+| Irrelevant or redundant columns | `date`, `population_density`, `rural_population`, `regulatory_quality_estimate`, `logistic_performance_index`, `other_greenhouse_emisions`, `military_expenditure_percent`, `code`, `statistical_performance_indicators`, `voice_and_accountability_std`, `political_stability_std`, `rule_of_law_std`, `regulatory_quality_std`, `goverment_effectiveness_std`, `control_of_corruption_std`, `economy`, `land_area`, `birth_rate`, `death_rate` | Columns that are irrelevant for analysis, duplicated, or highly correlated with other variables | Removed or excluded irrelevant, redundant, or highly correlated columns |
 
 ---
 ## 4. Descriptive statistics
