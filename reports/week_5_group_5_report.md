@@ -145,7 +145,14 @@ Notably, the "development ladder" yields consistent gains: moving from Low to Lo
 Income group has a strong effect on GDP:  
 
 - High-income countries have significantly higher GDP compared to Low-, Lower-Middle-, and Upper-Middle-income countries.  
-- Differences among the Low-, Lower-Middle-, and Upper-Middle-income groups are not statistically significant, indicating that GDP levels within these middle and lower groups are relatively similar.  
+- Differences among the Low-, Lower-Middle-, and Upper-Middle-income groups are not statistically significant, indicating that GDP levels within these middle and lower groups are relatively similar.
+
+![Boxplot](../additional_material/visualizations/week5/gdp_normality.png)
+
+---
+
+![Boxplot](../additional_material/visualizations/week5/gdp_variance.png)
+
 ---
 **Environmental Sustainability: CO₂ emisions**  
 
@@ -156,4 +163,12 @@ Income group has a very strong effect on CO₂ emissions:
 - Income groups in the middle range (Low ↔ Lower-Middle ↔ Upper-Middle) do not differ much from each other.  
 - Upper-Middle-income countries are very close to High-income countries in terms of emissions, showing no significant difference.  
 
+![Boxplot](../additional_material/visualizations/week5/co2_emision_normality.png)
 
+---
+
+![Boxplot](../additional_material/visualizations/week5/co2_emission_variance.png)
+
+---
+
+![Boxplot](../additional_material/visualizations/week5/co2_risduals.png)
