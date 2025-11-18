@@ -161,7 +161,7 @@ Notably, the "development ladder" yields consistent gains: moving from Low to Lo
 ---
 **Economic Performance: GDP**  
 
-Income group has a strong effect on GDP:  
+Anova showed that income group has an effect on GDP:  
 
 - High-income countries have significantly higher GDP compared to Low-, Lower-Middle-, and Upper-Middle-income countries.  
 - Differences among the Low-, Lower-Middle-, and Upper-Middle-income groups are not statistically significant, indicating that GDP levels within these middle and lower groups are relatively similar.
@@ -175,7 +175,7 @@ Income group has a strong effect on GDP:
 ---
 **Environmental Sustainability: CO₂ emisions**  
 
-Income group has a very strong effect on CO₂ emissions:  
+Anova showed that income group has a strong effect on CO₂ emissions:  
 
 - High-income countries emit significantly more CO₂ than Low- and Lower-Middle-income countries.  
 - Upper-Middle-income countries emit significantly more than Low-income countries.  
