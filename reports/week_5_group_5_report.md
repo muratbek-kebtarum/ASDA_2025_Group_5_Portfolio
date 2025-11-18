@@ -2,7 +2,7 @@
 
 | Name        | Contribution                                      |
 | :---        | :---                                             |
-| Ahmed       | Data Cleaning & Group Comparison (CO2 Emissions and GDP) |
+| Ahmed       | Data Cleaning & visualization & Group Comparison (CO2 Emissions and GDP) |
 | Akash       |                                                 |
 | Murat       | Report assembly, visualization, group Comparison (Life Expectancy at Birth)   |
 | Muhammad Ilyas |                                              |
@@ -114,10 +114,29 @@
 | **Least frequent value (frequency)** |  |  |
 
 ---
+## 5. Some Insights from the data
 
+![Boxplot](../additional_material/visualizations/week5/land_percent_over_time.png)
+The chart shows that global attention to agriculture peaked between the 1960s and the late 1990s, with the percentage of agricultural land rising steadily from 35.4% to a high of 37.7%. Since the turn of the millennium, this percentage has generally plateaued
 
+---
 
-## 5. Analysis - Research question
+![Boxplot](../additional_material/visualizations/week5/china_co2_emisions.png)
+This box plot reveals a significant increase in China's CO2 emissions over two distinct periods. The data clearly shows that China's reliance on carbon-intensive growth intensified in the later period.
+
+---
+
+![Boxplot](../additional_material/visualizations/week5/south_korea_gdp.png)
+This chart shows the development of south Korea gdp over time form 1960-2023.
+
+---
+
+![Boxplot](../additional_material/visualizations/week5/venzula_crisis.png)
+The charts vividly illustrate the devastating economic collapse of Venezuela, showing a sharp decline in GDP and a simultaneous, rapid acceleration of inflation following the onset of the crisis around 2013-2014.
+The crisis was fundamentally caused by over-reliance on oil exports combined with catastrophic economic mismanagement like strict price controls and the mass printing of money to cover budget deficits
+
+---
+## 6. Analysis - Research question
 
 #### Human Well-being: Life Expectancy at Birth
 
