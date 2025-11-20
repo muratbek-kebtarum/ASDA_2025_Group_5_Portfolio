@@ -3,7 +3,7 @@
 | Name        | Contribution                                      |
 | :---        | :---                                             |
 | Ahmed       | Data Cleaning & visualization & Group Comparison (CO2 Emissions and GDP) |
-| Akash       |                                                 |
+| Akash       | Data Integration & Indicator Processing                                                 |
 | Murat       | Report assembly, visualization, group Comparison (Life Expectancy at Birth)   |
 | Muhammad Ilyas |                                              |
 | Viktoria    |                                                 |
