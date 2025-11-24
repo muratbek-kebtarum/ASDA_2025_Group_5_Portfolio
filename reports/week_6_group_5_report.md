@@ -59,8 +59,15 @@ This result does not imply that electricity *causes* a rejection of green energy
 
 ---
 
-## Research Question 2: ...
-...
+## Research Question 2: The Institutional Nexus
+**RQ:** *Are countries that are good at fighting corruption also just generally good at running things? Does this link hold true no matter which continent you look at?*
+
+We bet there's a nearly perfect match between low corruption and effective government globally. We expect that wherever you find less bribery and cleaner deals, you'll find better services
+
+#### Data Inspection
+We began by inspecting the distribution of our governance indicators using the World Bank dataset.
+
+
 ---
 ### Conclusion
 
