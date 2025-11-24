@@ -7,10 +7,9 @@
 | Name        | Contribution                                      |
 | :---        | :---                                             |
 | Ahmed       | RQ2 (The Institutional Nexus) |
-| Akash       |                                               |
+| Muhammad Ilyas, Akash, Viktoria | RQ3 (Renewable energy and CO₂), RQ4 (GDP and CO₂ emissions) |
 | Murat       | RQ1 (The Energy Paradox)  |
-| Muhammad Ilyas |                                              |
-| Viktoria    |  
+
 
 ---
 
@@ -18,8 +17,7 @@
 Building on our previous comparative analysis of World Bank data, this report investigates the relationships between key development indicators. Specifically, we explore the link between :
 - Infrastructure development (`Electricity Access`) and environmental sustainability (`Renewable Energy Consumption`). While traditional development theory suggests that advanced infrastructure facilitates greener technology, our analysis tests whether this holds true across the global economic spectrum.
 - institutional integrity (`Control of Corruption`) and administrative capacity (`Government Effectiveness`). While traditional development theory often treats these two pillars of governance as separate challenges to be tackled independently, our analysis tests whether this holds true across the global political spectrum.
-- ...
----
+- climate change and economic development are two of the most pressing issues facing the modern world. Specifically, we examine whether shifting to `renewable energy` correlates with lower `carbon emissions`, and whether economic growth (measured by `GDP`) inevitably leads to higher `emissions`. By analyzing these development indicators, we aim to understand if sustainable growth is visible in the current global data.
 
 ## Research Question 1: The Energy Paradox
 **RQ:** *Does universal access to electricity imply a transition to cleaner energy sources, or does it historically rely on non-renewable infrastructure?*
@@ -117,7 +115,63 @@ The most striking finding is the uniform strength of this relationship when we d
 This universal pattern underscores that good governance is not a regional phenomenon but a global best practice. Whether in a highly developed European economy or a rapidly emerging Asian one, the building blocks of a capable state remain the same: accountability, transparency, and the rule of law. Where institutions are weak, the problems of corruption and ineffectiveness amplify each other in a vicious cycle. Where institutions are strong, they reinforce each other in a virtuous cycle.
 
 ---
-## Research Question 3: ...
+## Research Question 3: Renewable energy and CO₂
+
+**RQ**: *Do countries with higher renewable energy consumption have lower CO₂ emissions?*
+
+To answer this question, we analyzed the relationship between the percentage of renewable energy consumption and total CO₂ emissions. Because CO₂ data contains extreme outliers, we used **the Spearman** rank correlation method to minimize the impact of skewed data.
+
+**Data Visualization**
+
+The scatter plot below illustrates the distribution of countries based on their renewable energy usage and emission levels.
+
+Pic 7: Scatter plot showing Renewable Energy Consumption (%) vs. CO₂ Emissions (kt).
+
+![Scatter plot showing Renewable Energy Consumption (%) vs. CO₂ Emissions (kt)](../additional_material/visualizations/week6/Rq3-4/ScatterPlotCO2Emissions-Renewable.png)
+
+**Statistical Analysis**
+
+●	**Correlation Coefficient (r):** -0.274
+●	**P-value:** 3.69e-120 (< 0.001)
+
+**Interpretation**
+
+The statistical analysis reveals **a weak to moderate negative correlation (r = -0.27)**. This result is statistically significant ($p < 0.05$). The negative sign indicates that, generally, as renewable energy consumption increases, CO₂ emissions tend to decrease.
+
+However, the scatter plot reveals a complex relationship rather than a straight line.
+
+●	Countries with **80-100% renewable consumption** (often smaller nations relying on hydropower or biomass) consistently show very low emissions.
+
+●	Countries with low renewable usage (<20%) show massive variation—ranging from low emitters to massive industrial economies emitting gigatons of CO₂.
+This suggests that while increasing renewable energy is linked to lower emissions, the sheer size of an economy is likely a stronger predictor of total emissions than the energy mix alone.
+
+## 3 Research Question 4: GDP and CO₂ emissions  
+
+**RQ:** Is there a relationship between GDP and CO₂ emissions across countries?
+
+Here, we investigated the link between economic output (GDP) and environmental damage (CO₂). Since both GDP and CO₂ values span huge ranges (from very small economies to trillions of dollars), we applied a **logarithmic transformation** to normalize the data before visualizing it. We again relied on **Spearman’s** rank correlation coefficient.
+
+
+**Data Visualization**
+
+The log-transformed scatter plot below displays the relationship between economic size and emissions.
+
+Pic 8: Log-transformed scatter plot of GDP vs. CO₂ Emissions.
+
+![Log-transformed scatter plot of GDP vs. CO₂ Emissions](../additional_material/visualizations/week6/Rq3-4/ScatterPlotGDP-CO2Emissions.png)
+
+**Statistical Analysis**
+
+●	**Correlation Coefficient (r):** 0.954
+●	**P-value:** 0.0 (< 0.001)
+
+**Interpretation**
+
+The analysis shows **an extremely strong positive correlation (r = 0.95)**. The scatter plot demonstrates a nearly perfect linear upward trend, indicating that as a country's GDP increases, its CO₂ emissions almost invariably increase as well.
+
+This highlights the historical coupling between economic growth and industrial emissions. While wealthy nations emit the most, the tight clustering of points suggests that very few countries have managed to achieve high GDP with low emissions. This reinforces the massive challenge of "decoupling" growth from pollution; currently, wealth is a near-perfect predictor of environmental impact.
+
+
 
 ---
 ### Conclusion
@@ -125,3 +179,8 @@ This universal pattern underscores that good governance is not a regional phenom
 1. The data confirms that the path to universal electricity access has historically led away from renewable sources. Furthermore, our extension analysis links this "traditional renewable" usage to lower life expectancy, suggesting that for developing nations, the 'green' energy of the past (biomass) was insufficient for a healthy life. Future development policies must actively break this pattern to ensure that emerging economies can achieve 100% access without replicating the fossil-fuel dependence of the current high-income nations.
 
 2. The analysis set out to determine the extent to which a nation's ability to control corruption correlates with its government effectiveness, and whether this relationship holds consistently across global regions. The results overwhelmingly validate the initial hypothesis, establishing that institutional integrity (Control of Corruption) is the indispensable foundation for administrative capacity (Government Effectiveness).
+
+3. Our analysis of the World Bank data highlights a global dilemma. On one hand, we found a **near-perfect positive link (0.95)** between wealth (GDP) and emissions, showing that economic power currently comes at a high environmental cost. 
+On the other hand, **the negative correlation (-0.27)** between renewables and emissions offers a potential solution, though the relationship is weaker and noisier.
+
+The data suggests that while renewable energy is associated with lower emissions, simply increasing renewables may not be enough to offset the massive emissions generated by high-GDP industrial activities without further structural changes to the economy.
