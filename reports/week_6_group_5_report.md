@@ -2,13 +2,23 @@
 **Group:** 5 
 **Date:** November 24, 2025
 
+## Authors of the report
+
+| Name        | Contribution                                      |
+| :---        | :---                                             |
+| Ahmed       | RQ2 (The Institutional Nexus) |
+| Akash       |                                               |
+| Murat       | RQ1 (The Energy Paradox)  |
+| Muhammad Ilyas |                                              |
+| Viktoria    |  
+
 ---
 
 ## Introduction
 Building on our previous comparative analysis of World Bank data, this report investigates the relationships between key development indicators. Specifically, we explore the link between :
 - Infrastructure development (`Electricity Access`) and environmental sustainability (`Renewable Energy Consumption`). While traditional development theory suggests that advanced infrastructure facilitates greener technology, our analysis tests whether this holds true across the global economic spectrum.
+- institutional integrity (`Control of Corruption`) and administrative capacity (`Government Effectiveness`). While traditional development theory often treats these two pillars of governance as separate challenges to be tackled independently, our analysis tests whether this holds true across the global political spectrum.
 - ...
-
 ---
 
 ## Research Question 1: The Energy Paradox
