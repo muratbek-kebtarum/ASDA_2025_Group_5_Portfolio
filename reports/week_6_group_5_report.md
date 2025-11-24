@@ -145,7 +145,7 @@ However, the scatter plot reveals a complex relationship rather than a straight 
 ●	Countries with low renewable usage (<20%) show massive variation—ranging from low emitters to massive industrial economies emitting gigatons of CO₂.
 This suggests that while increasing renewable energy is linked to lower emissions, the sheer size of an economy is likely a stronger predictor of total emissions than the energy mix alone.
 
-## 3 Research Question 4: GDP and CO₂ emissions  
+## Research Question 4: GDP and CO₂ emissions  
 
 **RQ:** Is there a relationship between GDP and CO₂ emissions across countries?
 
