@@ -9,3 +9,6 @@
 
 
 ## (Week 5) The report for the World Bank dataset is [here.](./reports/week_5_group_5_report.md)
+
+
+## (Week 6) The report for research questions are [here.](./reports/week_6_group_5_report.md)
