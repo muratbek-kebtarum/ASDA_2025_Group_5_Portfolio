@@ -65,10 +65,53 @@ This result does not imply that electricity *causes* a rejection of green energy
 We bet there's a nearly perfect match between low corruption and effective government globally. We expect that wherever you find less bribery and cleaner deals, you'll find better services
 
 #### Data Inspection
-We began by inspecting the distribution of our governance indicators using the World Bank dataset.
+1. Inspecting the distribution of our governance indicators using the World Bank dataset.
+![Distribution of governance indicators](../additional_material/visualizations/week6/Corruption_VS_GovermentEffectivness/Distibution_Corruption_Government.png)
+Pic. 4: Distribution of Governance Indicators. The histogram for the Control of Corruption Estimate and the Government Effectiveness Estimate displays distributions that are broadly centralized but clearly non-normal and somewhat negatively skewed. The frequency curves are not the smooth bell shape expected from a normal distribution.
 
+**Observation:** The data is not normally distributed. It shows a scattered pattern with multiple peaks and a wide spread ranging from negative (poor governance) to positive (good governance) values, violating the assumption of normality required for parametric tests.
+
+2. Inspecting the Variance of our governance indicators using the World Bank dataset.
+![Variance of governance indicators](../additional_material/visualizations/week6/Corruption_VS_GovermentEffectivness/BoxPlot_Corruption_Government.png)
+Pic. 5: The median line for both corruption control and effectiveness sits just a tiny bit below the $0.0$ mark. This means the typical country in the world is rated slightly below average on both being honest and being competent.
+The size of the box is almost identical for both.
+
+3. Inspecting the Scatter Plot of our governance indicators using the World Bank dataset.
+![Scatter of governance indicators](../additional_material/visualizations/week6/Corruption_VS_GovermentEffectivness/ScatterPlot_Corruption_Government.png)
+Pic. 6: The scatter plot clearly visualizes the relationship between the two governance indicators. The points form an extremely tight, upward-sloping cloud that closely hugs a diagonal line extending from the bottom-left to the top-right.
+
+**Observation:** The data displays a near-perfect linear and monotonic relationship. This visual pattern means that as a country's rank in Control of Corruption (X-axis) increases, its rank in Government Effectiveness (Y-axis) increases almost identically.
+   
+
+#### Statistical Test
+We quantified the strength of this relationship using a Spearman correlation test via the Pingouin library to ensure statistical robustness.
+
+#### Correlation Between Control of Corruption and Government Effectiveness (Spearman)
+##### **Overall (All Countries)**
+| n   | Spearman r | 95% CI        | p-value        | Interpretation                 |
+|-----|------------|---------------|----------------|--------------------------------|
+| 199 | 0.92       | [0.89, 0.94]  | 3.66×10⁻⁸¹     | Very strong global correlation |
+
+##### **In Each Continent**
+| Continent        | n   | Spearman r | 95% CI        | p-value          | Interpretation                 |
+|------------------|-----|------------|---------------|------------------|--------------------------------|
+| Asia             | 62  | 0.85       | [0.77, 0.91]  | 1.23×10⁻¹⁸       | Very strong positive correlation |
+| Europe           | 53  | 0.97       | [0.95, 0.98]  | 2.15×10⁻³²       | Near-perfect positive correlation |
+| Africa           | 45  | 0.86       | [0.76, 0.92]  | 4.81×10⁻¹⁴       | Very strong positive correlation |
+| South America    | 36  | 0.88       | [0.78, 0.94]  | 1.30×10⁻¹²       | Very strong positive correlation |
+
+#### Interpretation
+The nearly perfect correlation ($\rho \approx +0.92$) tells us that these two rank-ordered lists are virtually identical. A nation’s success in maintaining low corruption is a near-guarantee of its high governmental effectiveness. This isn't coincidence; it is a fundamental institutional reality. Corruption acts as a caustic agent that systematically destroys administrative capacity
+
+The most striking finding is the uniform strength of this relationship when we disaggregate the data by continent
+This universal pattern underscores that good governance is not a regional phenomenon but a global best practice. Whether in a highly developed European economy or a rapidly emerging Asian one, the building blocks of a capable state remain the same: accountability, transparency, and the rule of law. Where institutions are weak, the problems of corruption and ineffectiveness amplify each other in a vicious cycle. Where institutions are strong, they reinforce each other in a virtuous cycle.
+
+---
+## Research Question 3: ...
 
 ---
 ### Conclusion
 
-The data confirms that the path to universal electricity access has historically led away from renewable sources. Furthermore, our extension analysis links this "traditional renewable" usage to lower life expectancy, suggesting that for developing nations, the 'green' energy of the past (biomass) was insufficient for a healthy life. Future development policies must actively break this pattern to ensure that emerging economies can achieve 100% access without replicating the fossil-fuel dependence of the current high-income nations.
+1. The data confirms that the path to universal electricity access has historically led away from renewable sources. Furthermore, our extension analysis links this "traditional renewable" usage to lower life expectancy, suggesting that for developing nations, the 'green' energy of the past (biomass) was insufficient for a healthy life. Future development policies must actively break this pattern to ensure that emerging economies can achieve 100% access without replicating the fossil-fuel dependence of the current high-income nations.
+
+2. The analysis set out to determine the extent to which a nation's ability to control corruption correlates with its government effectiveness, and whether this relationship holds consistently across global regions. The results overwhelmingly validate the initial hypothesis, establishing that institutional integrity (Control of Corruption) is the indispensable foundation for administrative capacity (Government Effectiveness).
