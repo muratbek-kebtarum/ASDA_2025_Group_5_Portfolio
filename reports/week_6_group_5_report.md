@@ -77,7 +77,7 @@ We bet there's a nearly perfect match between low corruption and effective gover
 ![Distribution of governance indicators](../additional_material/visualizations/week6/Corruption_VS_GovermentEffectivness/Distibution_Corruption_Government.png)
 Pic. 4: Distribution of Governance Indicators. The histogram for the Control of Corruption Estimate and the Government Effectiveness Estimate displays distributions that are broadly centralized but clearly non-normal and somewhat negatively skewed. The frequency curves are not the smooth bell shape expected from a normal distribution.
 
-**Observation:** The data is not normally distributed. It shows a scattered pattern with multiple peaks and a wide spread ranging from negative (poor governance) to positive (good governance) values, violating the assumption of normality required for parametric tests.
+**Observation:** The data is not normally distributed. It shows a scattered pattern with a wide spread ranging from negative to positive values, violating the assumption of normality required for parametric tests.
 
 2. Inspecting the Variance of our governance indicators using the World Bank dataset.
 ![Variance of governance indicators](../additional_material/visualizations/week6/Corruption_VS_GovermentEffectivness/BoxPlot_Corruption_Government.png)
