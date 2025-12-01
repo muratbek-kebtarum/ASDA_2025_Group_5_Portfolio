@@ -87,6 +87,8 @@
 
 ## 5. Some Insights from the data
 
+Correlation before data cleaning:
+
 ![species](../additional_material//visualizations/week7/correlationsMap.png)
 
 ---
