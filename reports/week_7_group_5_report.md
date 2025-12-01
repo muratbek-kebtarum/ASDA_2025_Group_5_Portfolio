@@ -4,8 +4,8 @@
 ## 0. Authors of the report
 | Name        | Contribution                                      |
 | :---        | :---                                             |
-| Murat       |Data Cleaning, Feature Selection (VIF & AIC), Linear Regression Modeling, Mixed Effect Model Analysis|
-| Ahmed       |
+| Murat       |Data Cleaning, Feature Selection (VIF & AIC), Linear Regression Modeling(RQ1), Mixed Effect Model Analysis(RQ1)|
+| Ahmed       |Visualization ,RQ2 |
 | Muhammad Ilyas |Report Documentation
 |Akash| |
 |Viktoria| |
@@ -114,13 +114,7 @@ The raw weight data was heavily skewed. By applying the Log transformation (show
 
 ## 6. Analysis - Research question
 
-#### RQ: Can we find an easy, reliable way to estimate a fish's weight using only its length, to save time for field workers and avoid having to weigh every single fish?
-
-
-
----
-
-#### RQ: Can we accurately predict the weight of a fish using its Species and Length?
+### RQ1: Can we accurately predict the weight of a fish using its Species and Length?
 
 **Primary Model: Linear Regression**
 
@@ -146,3 +140,54 @@ We investigated whether "Species" acts just as a label or as a biological groupi
 > **Conclusion:** The massive drop in AIC scores (from 263 to 41) proves that treating Species as a **Random Effect** provides a significantly superior fit. This implies that while all fish grow longer-to-heavier in a similar way, each species has a unique "baseline" body shape that must be accounted for.
 
 ![Residuals Histogram](../additional_material//visualizations/week7/residuals_hist.png)
+
+---
+
+### RQ2: Can we find an easy, reliable way to estimate a fish's weight using only its length, to save time for field workers and avoid having to weigh every single fish?
+
+
+![Weight](../additional_material//visualizations/week7/weight_Vs_sqrt.png)
+
+The second scatter plot (Length vs Weight) clearly displays a non-linear, curved relationship between the variables, confirming that a standard linear model is inadequate. However, the transformed plot successfully linearizes this relationship, showing a strong linear pattern between length3 and sqrt(Weight).
+
+---
+
+![Weight Dis](../additional_material//visualizations/week7/Weight_dis.png)
+
+The distribution plot shows that the transformed dependent variable, $\text{sqrt}(\text{Weight})$, has become more symmetrical than the original variable. Although not a perfect bell-shaped curve, the current distribution approximates normality sufficiently, supporting the statistical assumptions required for the linear regression model.
+
+---
+
+![Weight Dis](../additional_material//visualizations/week7/length_SqrtWeight.png)
+
+The final linear fit for sqrt(Weight) against Length confirms a strong predictive relationship. However, the data points scatter more widely at the high end of the scale, indicating that the model's prediction error is greater for the largest fish.
+
+---
+
+![Weight Dis](../additional_material//visualizations/week7/Length_Sqrtweight_predicted_vs_actual.png)
+
+The tight grouping of predicted versus actual weight values confirms the model's high accuracy. The fit is strong across the range, with a small and expected decrease in precision (wider scatter) observed for the largest fish. This validates the use of the model for simplified field estimation.
+
+---
+
+![Weight Dis](../additional_material//visualizations/week7/residuals_sqrtweight.png)
+
+This histogram displays the distribution of the model's residuals (prediction errors). The distribution is approximately centered around zero (the mean residual is near zero), which is a key requirement for the model. While the shape is not perfectly normal (it appears slightly irregular), it is symmetrical enough to suggest that the assumption of normally distributed errors is met sufficiently.
+
+---
+
+| Metric | Value    |
+|--------|----------|
+| R²     | 0.9258   |
+| MAE    | 2.0217   |
+| MSE    | 7.4377   |
+| RMSE   | 2.7272   |
+| Prob (F-statistic) | 3.97e-84 |
+
+> **Conclusion:** The model shows a very strong relationship between Length and sqrt(Weight), supported by an R² of 0.9258, meaning that approximately 92.6% of the variation in sqrt(Weight) is explained by the model.
+The coefficient for Length3 is 0.7576, meaning that for every 1-unit increase in Length3, the predicted sqrt(Weight) increases by approximately 0.76 units
+Additionally, the p-value from the F-statistic (3.97e-84) is extremely small, providing strong statistical evidence that the model is significant.
+
+---
+## 7. AI Disclaimer
+
