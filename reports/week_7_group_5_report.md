@@ -6,7 +6,7 @@
 | :---        | :---                                             |
 | Murat       |Data Cleaning, Feature Selection (VIF & AIC), Linear Regression Modeling, Mixed Effect Model Analysis|
 | Ahmed       |
-| Muhammad Ilyas ||
+| Muhammad Ilyas |Report Documentation
 |Akash| |
 |Viktoria| |
 
@@ -20,7 +20,7 @@
 | **Number of rows** | 159 |
 | **Number of columns** | 7 |
 | **Format file** | .csv |
-| **Authors of the dataset** | - |
+| **Authors of the dataset** | Aung Pyae |
 | **Source (name)** | Kaggle / Course Materials |
 | **Source (link)** | [Link to GitHub/Kaggle] |
 
@@ -33,14 +33,14 @@
 - Columns: 7 key indicators
 
 | Feature/Variable | Data Type | Number of Unique Values | Example Values |
-|---|---|---|---|
-|  |  |  | |
-|  |  |  | |
-|  |  |  |  |
-|  |  |  | |
-|  |  |  ||
-|  |  |  | |
-|  |  |  |   |
+| :--- | :--- | :--- | :--- |
+| **Species** | Object (String) | 7 | Bream, Perch, Smelt |
+| **Weight** | Float64 | 101 | 242.0, 290.0, 340.0 |
+| **Length1** | Float64 | 116 | 23.2, 24.0, 23.9 |
+| **Length2** | Float64 | 93 | 25.4, 26.3, 26.5 |
+| **Length3** | Float64 | 124 | 30.0, 31.2, 31.1 |
+| **Height** | Float64 | 126 | 11.5200, 12.4800 |
+| **Width** | Float64 | 114 | 4.0200, 4.3056 |
 
 
 
@@ -63,22 +63,25 @@
 
 | Feature | Count | Mean | Std Dev | Min | 25% | 50% | 75% | Max |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|| | | | |  | | |  |
-| | | |  | |  |  |  |  |
-|| | |  |  | |  |  |  |
+| **Weight** | 159 |398.33| 357.98 | 0.0 | 120.00|273.0| 650.00 |1650.0|
+| **Length1**| 159 | 26.25| 9.99   | 7.5 | 19.05 |25.2 | 32.70  |59.0 |
+| **Length2**| 159 | 28.41| 10.72  | 8.4 | 21.00 |27.3 | 35.50  |63.4 |
+| **Length3**| 159 | 31.23| 11.61  | 8.8 | 23.15 |29.4 | 39.65  |68.0 |
+| **Height** | 159 | 8.97 | 4.29   | 1.73| 5.94  |7.79 | 12.37  |18.96|
+| **Width**  | 159 | 4.42 | 1.69   | 1.05| 3.39  |4.25 | 5.58   |8.14 |
 
-> **Observation:** The standard deviation of the raw weight (359.1) is nearly as large as the mean, indicating extreme variability. The Log transformation stabilized this significantly.
+> **Observation:** The standard deviation of the raw weight (357.98) is nearly as large as the mean (Coefficient of Variation\approx 1), it strongly suggests the data is not normally distributed and likely skewed., indicating extreme variability. The Log transformation stabilized this significantly.
 
 ### Category columns
 
-| | **Species** |
+| | Species |
 | :--- | :--- |
-| **Count** |  |
-| **Number of unique values** |  |
-| **Most frequent value** |  |
-| **Most frequent value (frequency)** |  |
-| **Least frequent value** |  |
-| **Least frequent value (frequency)** |  |
+| **Count** | 159 |
+| **Number of unique values** | 7 |
+| **Most frequent value** | Perch |
+| **Most frequent value (frequency)** | 56 |
+| **Least frequent value** | Whitefish |
+| **Least frequent value (frequency)** | 6 |
 
 ---
 
