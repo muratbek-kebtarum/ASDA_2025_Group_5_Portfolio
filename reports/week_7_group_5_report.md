@@ -87,8 +87,24 @@
 
 ## 5. Some Insights from the data
 
+![species](../additional_material//visualizations/week7/correlationsMap.png)
 
+---
+![species](../additional_material//visualizations/week7/species.png)
 
+This chart illustrates the distribution and frequency of the observed fish species. It is clear that Perch is the most prevalent species, recording the highest count in the sample.
+
+---
+![MeanWeight](../additional_material//visualizations/week7/MeanWeight.png)
+
+This chart illustrates the mean weight of different fish species within the studied sample. It is clear that Pike records the highest average weight, exceeding 700 units. It is closely followed by Bream and Whitefish with relatively high mean weights. Conversely, species such as Parkki, Roach, and Smelt are classified as the lightest, recording the lowest mean weights in the sample
+
+---
+![Boxplot](../additional_material//visualizations/week7/WeightBoxPlot.png)
+
+This boxplot demonstrates the weight distribution and high variability among fish species. Pike exhibits the largest range and highest median weight, alongside significant right-skewness due to the presence of extremely heavy individuals. In contrast, species like Roach and Parkki show a tight distribution, indicating highly consistent weights among their population members.
+
+---
 
 ![Log Weight Histogram](../additional_material//visualizations/week7/log_weight_hist.png)
 **Normalization of Target:**
@@ -98,7 +114,13 @@ The raw weight data was heavily skewed. By applying the Log transformation (show
 
 ## 6. Analysis - Research question
 
-#### RQ: Can we accurately predict the weight of a fish using just its Species and Length?
+#### RQ: Can we find an easy, reliable way to estimate a fish's weight using only its length, to save time for field workers and avoid having to weigh every single fish?
+
+
+
+---
+
+#### RQ: Can we accurately predict the weight of a fish using its Species and Length?
 
 **Primary Model: Linear Regression**
 
