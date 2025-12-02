@@ -8,7 +8,7 @@
 | Ahmed       |Visualization ,RQ2 |
 | Muhammad Ilyas |Report Documentation
 |Akash| |
-|Viktoria| |
+|Viktoria| Review and checking structure |
 
 ---
 
