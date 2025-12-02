@@ -7,7 +7,7 @@
 | Murat       |Data Cleaning, Feature Selection (VIF & AIC), Linear Regression Modeling(RQ1), Mixed Effect Model Analysis(RQ1)|
 | Ahmed       |Visualization ,RQ2 |
 | Muhammad Ilyas |Report Documentation
-|Akash| |Data preprocessing support and assisting with model validation
+|Akash| Data preprocessing support and assisting with model validation |
 |Viktoria| Review and checking structure |
 
 ---
