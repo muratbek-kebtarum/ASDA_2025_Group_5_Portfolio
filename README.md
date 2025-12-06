@@ -1,5 +1,9 @@
 # ASDA_2025_Group_5_Portfolio
 
+### (Week 8) The report for research questions are [here.](./reports/week_8_group_5_report.md)
+
+### (Week 7) The report for research questions are [here.](./reports/week_7_group_5_report.md)
+
 ### (Week 6) The report for research questions are [here.](./reports/week_6_group_5_report.md)
 
 ### (Week 5) The report for the World Bank dataset is [here.](./reports/week_5_group_5_report.md)
