@@ -62,9 +62,6 @@
 | day_sin        |   18554 |    0.004 |    0.706 |  -0.975 |   -0.782 |    0     |    0.782 |    0.975 |   0.498       |            130.537 |
 | day_cos        |   18554 |    0.014 |    0.709 |  -0.901 |   -0.901 |   -0.223 |    0.623 |    1     |   0.502       |             36.216 |
 
-**adding a distribution plot of target variable - Distribution of Traffic Volume**
-![Distribution](../additional_material/visualizations/week8/target_dist.png)
-
 ## 5. Some Insights from the data
 
 ![Distribution](../additional_material/visualizations/week8/MissingDataHeatMap.png)
