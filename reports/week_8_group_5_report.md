@@ -115,7 +115,10 @@ We fitted two GLMs using the predictors listed above:
 
 ### Model Specification
 Both models use the same linear predictor structure:
-$$\ln(\mu) = \beta_0 + \beta_1 (\text{rain}) + \beta_2 (\text{temp}) + \dots + \beta_k (\text{day\_cos})$$
+
+#### ln(μ) = β₀ + β₁ × rain + … + βₖ × day_cos
+
+
 
 ---
 
