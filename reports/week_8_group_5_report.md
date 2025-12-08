@@ -50,16 +50,18 @@
 | Inconsistent categories    | weather_main              | Categorical text data (e.g., "Rain", "Squall") not usable by GLM | Applied One-Hot Encoding (`pd.get_dummies`) to create numeric binary columns |
 | Other                      | temp, hour,Day               | Temp was in Kelvin;Day_0f_week was linear(0-7);Hour was linear (0-23) misrepresenting time cyclicity | Converted Temp to Celsius; Transformed Hour into Cyclic features (Sin/Cos) |
 
-## 4. Descriptive statistics – numeric
-|                        | Target variable | Predictor 1 | Predictor 2 | Predictor 3 | Predictor 4 |
-| :---                   | :---           | :---        | :---        | :---        | :---        |
-| Count                  |                |             |             |             |             |
-| Mean                   |                |             |             |             |             |
-| Standard deviation     |                |             |             |             |             |
-| Min                    |                |             |             |             |             |
-| 25%                    |                |             |             |             |             |
-| 50%                    |                |             |             |             |             |
-| 75%                    |                |             |             |             |             |
-| Max                    |                |             |             |             |             |
-| Variance               |                |             |             |             |             |
-| Dispersion index (Variance / Mean)|                |             |             |             |             |
+## 4. Descriptive statistics – for numeric
+
+|                |   Count |     Mean |      Standard deviation |     Min |      25% |      50% |      75% |      Max |      Variance |   Dispersion index (Variance / Mean) |
+|:---------------|--------:|---------:|---------:|--------:|---------:|---------:|---------:|---------:|--------------:|-------------------:|
+| traffic_volume (Target variable) |   18554 | 3306.18  | 1981.12  | 151     | 1253.25  | 3476     | 4951.75  | 7280     |   3924831.745 |           1187.12  |
+| rain_1h        |   18554 |    0.052 |    0.413 |   0     |    0     |    0     |    0     |   10.6   |   0.171       |              3.269 |
+| temp_celsius   |   18554 |    8.687 |   12.236 | -26     |    0     |   10     |   19     |   36     | 149.714       |             17.234 |
+| hour_sin       |   18554 |    0.016 |    0.709 |  -1     |   -0.707 |    0     |    0.707 |    1     |   0.503       |             32.3   |
+| hour_cos       |   18554 |    0.006 |    0.705 |  -1     |   -0.707 |    0     |    0.707 |    1     |   0.497       |             86.228 |
+| day_sin        |   18554 |    0.004 |    0.706 |  -0.975 |   -0.782 |    0     |    0.782 |    0.975 |   0.498       |            130.537 |
+| day_cos        |   18554 |    0.014 |    0.709 |  -0.901 |   -0.901 |   -0.223 |    0.623 |    1     |   0.502       |             36.216 |
+
+
+
+
