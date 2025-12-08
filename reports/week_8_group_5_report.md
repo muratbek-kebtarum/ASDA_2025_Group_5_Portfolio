@@ -5,7 +5,7 @@
 |Akash|  |
 |Ilyas| Data filling and review |
 |Murat| Managed the team tasks and prepared the report. Cleaned the data and created features for the time of day. Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model.|
-|Viktoria|  |
+|Viktoria| Descriptive statistics  |
 
 ## 1. Dataset Overview
 | Item                          | Description |
@@ -61,6 +61,9 @@
 | hour_cos       |   18554 |    0.006 |    0.705 |  -1     |   -0.707 |    0     |    0.707 |    1     |   0.497       |             86.228 |
 | day_sin        |   18554 |    0.004 |    0.706 |  -0.975 |   -0.782 |    0     |    0.782 |    0.975 |   0.498       |            130.537 |
 | day_cos        |   18554 |    0.014 |    0.709 |  -0.901 |   -0.901 |   -0.223 |    0.623 |    1     |   0.502       |             36.216 |
+
+**adding a distribution plot of target variable - Distribution of Traffic Volume**
+![Distribution](../additional_material/visualizations/week8/target_dist.png)
 
 ## 5. Some Insights from the data
 
