@@ -131,6 +131,8 @@ Both models use the same linear predictor structure:
 
 Below is the comparison of the fitted models.
 
+![Residuals Comparison](../additional_material/visualizations/week8/models_comparison.png)
+
 ### Comparison Metrics
 
 | Metric | Poisson GLM | Negative Binomial GLM |
