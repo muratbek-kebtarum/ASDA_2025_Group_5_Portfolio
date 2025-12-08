@@ -62,8 +62,18 @@
 | day_sin        |   18554 |    0.004 |    0.706 |  -0.975 |   -0.782 |    0     |    0.782 |    0.975 |   0.498       |            130.537 |
 | day_cos        |   18554 |    0.014 |    0.709 |  -0.901 |   -0.901 |   -0.223 |    0.623 |    1     |   0.502       |             36.216 |
 
+## 5. Some Insights from the data
 
-## 5.1. Introduction and Problem Statement
+![Distribution](../additional_material/visualizations/week8/HourlyTrafficDay.png)
+
+The overall average traffic volume exhibits a bimodal distribution, characterized by distinct peaks during the standard commuting times. The morning rush hour (7 AM - 8 AM) shows a significant increase, but the evening peak (4 PM - 6 PM) represents the highest average traffic volume of the day, reaching nearly 5,800 vehicles.
+
+---
+![Distribution](../additional_material/visualizations/week8/HourlyTraffic.png)
+
+The chart illustrating Hourly Traffic Volume by Day of Week clearly demonstrates typical commuter traffic patterns. Peak volumes occur during the morning (7 AM - 8 AM) and evening (4 PM - 6 PM) rush hours on weekdays (Monday to Friday), with Thursday and Friday generally showing the highest peaks. Saturday and Sunday exhibit a different pattern, maintaining lower volumes during typical rush hours but showing more consistent, higher traffic throughout the mid-day and early afternoon (9 AM - 4 PM), reflecting non-commute, general travel. Traffic is lowest overnight (1 AM - 4 AM) across all days.
+
+## 6.1. Introduction and Problem Statement
 
 The engineering team is upgrading the legacy traffic prediction system. Historically, **Ordinary Least Squares (OLS) regression** has been used to estimate traffic volume. However, this approach is fundamentally flawed for our data type.
 
@@ -76,7 +86,7 @@ To address these limitations, we propose moving to a **Generalized Linear Model 
 
 ---
 
-## 5.2. Data Analysis and Predictor Selection
+## 6.2. Data Analysis and Predictor Selection
 
 ### Target Variable Inspection
 The target variable, `traffic_volume`, represents the hourly traffic count. Inspection of the distribution (Figure 1) reveals that the data is strictly non-negative and exhibits count-based properties. This confirms that a model capable of handling non-negative integer responses is required.
@@ -94,7 +104,7 @@ Based on the exploratory analysis, the following predictors were selected for th
 
 ---
 
-## 5.3. Generalized Linear Model (GLM) Testing
+## 6.3. Generalized Linear Model (GLM) Testing
 
 We fitted two GLMs using the predictors listed above:
 1.  **Poisson Regression**: The standard starting point for count data.
@@ -106,7 +116,7 @@ $$\ln(\mu) = \beta_0 + \beta_1 (\text{rain}) + \beta_2 (\text{temp}) + \dots + \
 
 ---
 
-## 5.4. Model Comparison Results
+## 6.4. Model Comparison Results
 
 Below is the comparison of the fitted models.
 
