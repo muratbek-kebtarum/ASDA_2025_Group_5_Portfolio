@@ -4,7 +4,7 @@
 |Ahmed|  |
 |Akash|  |
 |Ilyas|  |
-|Murat|Cleaned the data and created features for the time of day. Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model.|
+|Murat| Managed the team tasks and prepared the report. Cleaned the data and created features for the time of day. Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model.|
 |Viktoria|  |
 
 ## 1. Dataset Overview
