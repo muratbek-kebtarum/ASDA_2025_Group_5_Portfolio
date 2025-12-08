@@ -8,14 +8,14 @@
 |Viktoria|  |
 
 ## 1. Dataset Overview
-| Item                          | Description |
+> | Item                          | Description |
 | :---                          | :--- |
-| Dataset name                  |  |
-| Time period                   |  |
-| Sampling frequency            |  |
-| Number of rows                |  |
-| Number of columns             |  |
-| Format file (.csv, .txt, etc) |  |
+| Dataset name                  | Metro_Interstate_Traffic_Volume.csv |
+| Time period                   |  2012-10-02 09:00:00 to 2018-09-30 23:00:00|
+| Sampling frequency            | Hourly (freq='h') |
+| Number of rows                | 48,204 |
+| Number of columns             |  9|
+| Format file (.csv, .txt, etc) | .csv |
 | Creator of the dataset        |  |
 | Source (name)                 |  |
 | Source (link)                 |  |
