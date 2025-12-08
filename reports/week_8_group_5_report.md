@@ -21,17 +21,23 @@
 | Source (link)                 | https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume |
 
 
+
 ## 2. Dataset Structure
-| Feature/variable | Data type | Description | Number of unique values | Example values |
-| :---             | :---      | :---        | :---                    | :---           |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
+| Feature/variable | Data type    | Description                                              | Number of unique values | Example values                           |
+| :---             | :---        | :---                                                     | :---                    | :---                                     |
+| rain1h           | float       | Precipitation in the last hour (mm)                     | many (continuous)       | 0.05, 0.09, 1.78                         |
+| trafficvolume    | int         | Number of vehicles observed in the hour                 | many (continuous)       | 43522, 45518, 47569                      |
+| tempcelsius      | float       | Air temperature in degrees Celsius                      | many (continuous)       | 0.0, 10.0, 11.0                          |
+| isholiday        | int (0/1)   | Indicator whether the hour is on a holiday (1) or not   | 2                       | 0, 1                                     |
+| hoursin          | float       | Sine transform of hour of day (cyclical encoding)       | many (−1 to 1)          | 0.0, 0.5, −0.5                           |
+| hourcos          | float       | Cosine transform of hour of day (cyclical encoding)     | many (−1 to 1)          | 1.0, 0.71, −1.0                          |
+| daysin           | float       | Sine transform of day-of-week (cyclical encoding)       | many (−1 to 1)          | 0.78, 0.97, −0.43                        |
+| daycos           | float       | Cosine transform of day-of-week (cyclical encoding)     | many (−1 to 1)          | 0.62, −0.22, −0.90                       |
+| weathercloudy    | bool (0/1)  | Indicator for cloudy weather condition                  | 2                       | False, True                              |
+| weatherfoggy     | bool (0/1)  | Indicator for foggy weather condition                   | 2                       | False, True                              |
+| weatherrainy     | bool (0/1)  | Indicator for rainy weather condition                   | 2                       | False, True                              |
+| weathersnowy     | bool (0/1)  | Indicator for snowy weather condition                   | 2                       | False, True                              |
+| weatherstormy    | bool (0/1)  | Indicator for stormy weather condition                  | 2                       | False, True                              |
 
 
 ## 3. Data cleaning
