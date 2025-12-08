@@ -63,5 +63,96 @@
 | day_cos        |   18554 |    0.014 |    0.709 |  -0.901 |   -0.901 |   -0.223 |    0.623 |    1     |   0.502       |             36.216 |
 
 
+## 5.1. Introduction and Problem Statement
 
+The engineering team is upgrading the legacy traffic prediction system. Historically, **Ordinary Least Squares (OLS) regression** has been used to estimate traffic volume. However, this approach is fundamentally flawed for our data type.
 
+### Why OLS is Inappropriate
+OLS regression relies on two critical assumptions that traffic data violates:
+1.  **Normality of Errors**: OLS assumes the target variable (and residuals) follows a normal (Gaussian) distribution. Traffic volume is **count data** (non-negative integers). As shown in the data inspection, the distribution is not bell-shaped but rather multimodal and skewed.
+2.  **Homoscedasticity (Constant Variance)**: OLS assumes the variance of the error term is constant across all levels of the predictors. In traffic networks, variance typically scales with the mean (e.g., higher traffic volumes fluctuate more than low volumes). OLS fails to account for this **heteroscedasticity**, leading to inefficient estimates and invalid standard errors.
+
+To address these limitations, we propose moving to a **Generalized Linear Model (GLM)** framework, specifically testing **Poisson** and **Negative Binomial** regressions, which are designed for count data.
+
+---
+
+## 5.2. Data Analysis and Predictor Selection
+
+### Target Variable Inspection
+The target variable, `traffic_volume`, represents the hourly traffic count. Inspection of the distribution (Figure 1) reveals that the data is strictly non-negative and exhibits count-based properties. This confirms that a model capable of handling non-negative integer responses is required.
+
+**Figure 1: Distribution of Traffic Volume**
+![Distribution](../additional_material/visualizations/week8/target_dist.png)
+
+### Predictor Variables
+Based on the exploratory analysis, the following predictors were selected for the GLM:
+
+* **Meteorological Factors**: `rain_1h`, `temp_celsius` (converted from Kelvin), and weather condition indicators (`weather_cloudy`, `weather_foggy`, `weather_rainy`, `weather_snowy`, `weather_stormy`).
+* **Temporal Features**:
+    * `is_holiday`: Binary indicator for state holidays (adjusted for traffic impact).
+    * **Cyclical Time Features**: `hour_sin`, `hour_cos`, `day_sin`, `day_cos`. These transformed features allow the model to capture the cyclical nature of daily (24-hour) and weekly (7-day) patterns effectively.
+
+---
+
+## 5.3. Generalized Linear Model (GLM) Testing
+
+We fitted two GLMs using the predictors listed above:
+1.  **Poisson Regression**: The standard starting point for count data.
+2.  **Negative Binomial (NB) Regression**: An extension of Poisson that includes an extra parameter ($\alpha$) to handle overdispersion.
+
+### Model Specification
+Both models use the same linear predictor structure:
+$$\ln(\mu) = \beta_0 + \beta_1 (\text{rain}) + \beta_2 (\text{temp}) + \dots + \beta_k (\text{day\_cos})$$
+
+---
+
+## 5.4. Model Comparison Results
+
+Below is the comparison of the fitted models.
+
+### Comparison Metrics
+
+| Metric | Poisson GLM | Negative Binomial GLM |
+| :--- | :--- | :--- |
+| **AIC** | 8,608,351 | **265,234** |
+| **Log-Likelihood** | -4,304,162 | -132,604 |
+| **McFadden's $R^2$** | 0.593 | 0.141 |
+| **Dispersion Ratio** ($\chi^2 / dof$) | 577.64 | **2.58** |
+
+### Interpretation of Criteria
+
+#### 1. AIC (Akaike Information Criterion)
+* **Result**: The Negative Binomial model has a drastically lower AIC (265k vs. 8.6M).
+* **Interpretation**: AIC estimates the relative quality of statistical models. A lower AIC indicates a better trade-off between goodness of fit and model complexity. The massive difference strongly favors the **Negative Binomial** model.
+
+#### 2. Explained Variance (McFadden’s $R^2$)
+* **Result**: Poisson ($0.59$) vs. Negative Binomial ($0.14$).
+* **Caution**: While the Poisson model appears to have a higher $R^2$, this metric can be misleading when the underlying distributional assumption is wrong. The Poisson null model (denominator) fits so poorly that the fitted model looks excellent by comparison. The NB null model already accounts for variance better, making the relative improvement ($R^2$) appear smaller. We should prioritize AIC and Dispersion over this metric.
+
+#### 3. Handling Overdispersion
+* **Result**:
+    * **Poisson Dispersion**: ~577.6. The Poisson model assumes the Mean = Variance (Dispersion = 1). A value of 577 indicates extreme **overdispersion**; the model underestimates the variability in the data by a factor of nearly 600.
+    * **NB Dispersion**: ~2.6. The NB model includes an alpha parameter (estimated at $\alpha \approx 0.116$) to account for this. A dispersion ratio much closer to 1 indicates the NB model correctly captures the variance structure of the traffic data.
+
+#### 4. Residuals
+* **Poisson Residuals**: As seen in the diagnostic plots (Figure 4, left), Poisson residuals are extremely large, indicating the model is confident but wrong.
+* **NB Residuals**: The residuals for the NB model are significantly smaller and more standardized, confirming a better fit to the data density.
+
+**Figure 2: Predicted vs Actual Traffic Volume (NB GLM)**
+![Predicted vs Actual](../additional_material/visualizations/week8/nb_pred_vs_actual.png)
+
+**Figure 3: Residuals vs Predicted Traffic Volume (NB GLM)**
+![Residuals](../additional_material/visualizations/week8/nb_residuals.png)
+
+**Figure 4: Residuals Comparison (Poisson vs NB)**
+![Residuals Comparison](../additional_material/visualizations/week8/residuals_comparison.png)
+
+---
+
+## Conclusion
+
+**Which model is superior?**
+
+The **Negative Binomial Regression** is unequivocally superior.
+
+While the Poisson model provides a rough estimate of the mean trend, it fundamentally fails to model the uncertainty in the data (Dispersion >> 1). Using the Poisson model would lead to drastically underestimated standard errors, causing us to be "overconfident" in our predictions. The Negative Binomial model, by accounting for overdispersion, provides a statistically valid foundation for traffic volume prediction and should be the standard moving forward.
