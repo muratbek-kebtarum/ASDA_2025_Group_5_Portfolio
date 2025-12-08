@@ -1,7 +1,7 @@
 ## 0. Authors of the report
 | Name | Contribution |
 | :--- | :--- |
-|Ahmed|  |
+|Ahmed|Report Participation & Date Cleaning & Data Visalizations &  Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model|
 |Akash|  |
 |Ilyas|  |
 |Murat| Managed the team tasks and prepared the report. Cleaned the data and created features for the time of day. Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model.|
@@ -42,7 +42,7 @@
 | Time gaps                  | date_time                 | Large gaps/missing periods in the full dataset | Filtered dataset to retain only contiguous data from 2016–2017 |
 | Duplicates                 | -                         | None observed            | -            |
 | Inconsistent categories    | weather_main              | Categorical text data (e.g., "Rain", "Squall") not usable by GLM | Applied One-Hot Encoding (`pd.get_dummies`) to create numeric binary columns |
-| Other                      | temp, hour                | Temp was in Kelvin; Hour was linear (0-23) misrepresenting time cyclicity | Converted Temp to Celsius; Transformed Hour into Cyclic features (Sin/Cos) |
+| Other                      | temp, hour,Day               | Temp was in Kelvin;Day_0f_week was linear(0-7);Hour was linear (0-23) misrepresenting time cyclicity | Converted Temp to Celsius; Transformed Hour into Cyclic features (Sin/Cos) |
 
 ## 4. Descriptive statistics – numeric
 |                        | Target variable | Predictor 1 | Predictor 2 | Predictor 3 | Predictor 4 |
