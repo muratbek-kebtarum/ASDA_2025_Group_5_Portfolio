@@ -67,6 +67,11 @@
 
 ## 5. Some Insights from the data
 
+![Distribution](../additional_material/visualizations/week8/MissingDataHeatMap.png)
+
+The heat map shows a significantly high percentage of missing data, particularly from 2014 to 2015. The years 2017 and 2018 were chosen for analysis and modeling because they represent the only period (aside from late 2012) with consistently low missing data (mostly 0.0% to 2.7%).
+
+---
 ![Distribution](../additional_material/visualizations/week8/HourlyTrafficDay.png)
 
 The overall average traffic volume exhibits a bimodal distribution, characterized by distinct peaks during the standard commuting times. The morning rush hour (7 AM - 8 AM) shows a significant increase, but the evening peak (4 PM - 6 PM) represents the highest average traffic volume of the day, reaching nearly 5,800 vehicles.
