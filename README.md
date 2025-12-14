@@ -1,5 +1,7 @@
 # ASDA_2025_Group_5_Portfolio
 
+### (Week 9) The report for week 9 are [here.](./reports/week_9_group_5_report.md)
+
 ### (Week 8) The report for research questions are [here.](./reports/week_8_group_5_report.md)
 
 ### (Week 7) The report for research questions are [here.](./reports/week_7_group_5_report.md)
@@ -11,7 +13,3 @@
 ### (Week 4) The report for the Airbnb dataset is [here.](./reports/week_4_group_5_Airbnb_report.md)
 
 ### (Week 3) The report for the Lego Database is [here.](./reports/week_3_group_5_report.md)
-
-
-
-
