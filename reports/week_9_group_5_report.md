@@ -5,7 +5,7 @@
 |Akash||
 |Ilyas|  |
 |Murat|Data Cleaning, Analisys, Documentation|
-|Viktoria|  |
+|Viktoria|Verification and cross-checking of the modelling approach  |
 
 ## 1. Dataset Overview
 | Item                          | Description |
