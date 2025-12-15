@@ -1,6 +1,6 @@
 # ASDA_2025_Group_5_Portfolio
 
-### (Week 9) The report for week 9 are [here.](./reports/week_9_group_5_report.md)
+### (Week 9) The report for week 9 is [here.](./reports/week_9_group_5_report.md)
 
 ### (Week 8) The report for research questions are [here.](./reports/week_8_group_5_report.md)
 
