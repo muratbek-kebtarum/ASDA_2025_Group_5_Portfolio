@@ -71,8 +71,77 @@ Here are the numbers for the target and four strong predictors.
 | Dispersion index (Variance / Mean) | 34883.7   | 0.314   | 182.2   | 182.0   | 96.7   |
 
 
-## 5. Analysis (with visualisations)
+## 5.Features Reduction
 
+### Categorical Feature Reduction (Chi-Square Test)
+
+To reduce redundancy among categorical variables, pairwise **Chi-square tests of independence** were performed. Both the **p-value** and **Cramér’s V** were used to assess statistical dependence and the strength of association between variables.
+
+Several variable pairs showed **extremely small p-values (≈ 0)** combined with **high Cramér’s V values (> 0.5)**, indicating strong associations and overlapping information.
+
+#### Strongly Associated Variable Pairs
+
+| Variable 1      | Variable 2       | Cramér’s V |
+|-----------------|------------------|------------|
+| Exterior1st     | Exterior2nd      | 0.76       |
+| GarageType      | GarageFinish     | 0.69       |
+| MSZoning        | Neighborhood     | 0.65       |
+| BsmtQual        | BsmtFinType1     | 0.58       |
+| ExterQual       | KitchenQual      | 0.55       |
+| Foundation      | BsmtQual         | 0.53       |
+| BsmtExposure    | BsmtFinType1     | 0.52       |
+| BsmtQual        | BsmtExposure     | 0.52       |
+| BsmtQual        | BsmtFinType2     | 0.50       |
+| Neighborhood    | ExterQual        | 0.50       |
+
+#### Dropped Features
+
+Based on these results, one variable from each highly dependent pair was removed to reduce feature redundancy and limit potential multicollinearity after encoding. The following variables were dropped:
+
+- `Exterior2nd`
+- `GarageFinish`
+- `BsmtFinType1`
+- `BsmtFinType2`
+- `BsmtExposure`
+- `MSZoning`
+- `KitchenQual`
+
+This feature reduction step simplified the categorical feature space while preserving the most informative variables, improving model stability and interpretability.
+
+
+### Numerical Feature Reduction Using Variance Inflation Factor (VIF)
+
+To detect and mitigate multicollinearity among numerical variables, the **Variance Inflation Factor (VIF)** was computed. Variables with high VIF values indicate strong linear dependence on other predictors, which can destabilize coefficient estimates and reduce model interpretability, particularly in linear models.
+
+Based on the VIF analysis, several highly collinear variables were removed. The selection focused on retaining more aggregated or representative features while dropping redundant components.
+
+#### Removed Variables
+
+- **Condition and counts**
+  - `OverallCond`
+  - `BedroomAbvGr`
+  - `KitchenAbvGr`
+  - `FullBath`
+
+- **Garage capacity**
+  - `GarageCars`
+
+- **Temporal variables**
+  - `YrSold`
+  - `YearRemodAdd`
+
+- **Floor area components**
+  - `1stFlrSF`
+  - `2ndFlrSF`
+  - `LowQualFinSF`
+
+- **Basement area components**
+  - `BsmtFinSF1`
+  - `BsmtFinSF2`
+  - `BsmtUnfSF`
+
+
+## 6. Analysis (with visualisations)
 ### SalePrice distribution (raw)
 
 ![Distribution of SalePrice](../additional_material/visualizations/week9/Distribution_SalePrice.png)
@@ -89,10 +158,40 @@ After taking the log of SalePrice, the histogram looks more like a bell shape (m
 
 The boxplot shows the middle range of log prices and also outliers. There are still some outliers, but the spread looks more balanced than the raw SalePrice.
 
-### GLM: top 10 influential features
+### GLM 
+#### top 10 influential features
 ![Top 10 Most Influential Features in the GLM Model](../additional_material/visualizations/week9/Top_10_GLM.png)
 
 This bar chart shows the top 10 features with the biggest absolute coefficients in the GLM model. Location (Neighborhood categories) is very important, and also GrLivArea and OverallQual are strong predictors.
+
+#### Model Selection Process
+
+## Generalized Linear Model (GLM) Regression Summary
+
+| Attribute | Value |
+|-----------|-------|
+| Dependent Variable | SalePrice |
+| Number of Observations | 1,168 |
+| Model | GLM (Gaussian family) |
+| Link Function | Identity |
+| Degrees of Freedom (Residuals) | 1,127 |
+| Degrees of Freedom (Model) | 40 |
+| Scale | 0.0202 |
+| Estimation Method | IRLS |
+| Log-Likelihood | 641.90 |
+| Deviance | 22.783 |
+| Pearson Chi² | 22.8 |
+| Pseudo R² (Cox–Snell) | 0.9986 |
+
+
+
+| Metric | Value |
+|--------|-------|
+| RMSE (Train) | 31962 |
+| RMSE (Test)  | 28536 |
+| Null Model AIC | 1119.67 |
+| Final Model AIC | -1201.81 |
+
 
 ### Random Forest: top 10 important features
 ![Top 10 Important Features in Random Forest](../additional_material/visualizations/week9/top10randomforest.png)
