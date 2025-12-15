@@ -164,9 +164,15 @@ The boxplot shows the middle range of log prices and also outliers. There are st
 
 This bar chart shows the top 10 features with the biggest absolute coefficients in the GLM model. Location (Neighborhood categories) is very important, and also GrLivArea and OverallQual are strong predictors.
 
-#### Model Selection Process
+---
 
-## Generalized Linear Model (GLM) Regression Summary
+![neighborhood](../additional_material/visualizations/week9/neighborhood.png)
+
+The charts clearly illustrate that neighborhoods like Crawfor and StoneBr have the strongest positive influence, significantly increasing the sale price, while areas such as MeadowV and BrDale are associated with the largest decrease in sale price.
+
+
+
+#### Generalized Linear Model (GLM) Regression Summary
 
 | Attribute | Value |
 |-----------|-------|
