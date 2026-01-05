@@ -1,5 +1,5 @@
 <details>
-<summary><span style="font-size: 25px; font-weight: bold">
+<summary><span style="font-size: 30px; font-weight: bold">
           0. Authors of the report
       </span></summary>
 
@@ -14,7 +14,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 25px; font-weight: bold">
+<summary><span style="font-size: 30px; font-weight: bold">
           1. Dataset Overview
       </span></summary>
 
@@ -33,7 +33,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 25px; font-weight: bold">
+<summary><span style="font-size: 30px; font-weight: bold">
           2. Dataset Structure
       </span></summary>
 
@@ -52,7 +52,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 25px; font-weight: bold">
+<summary><span style="font-size: 30px; font-weight: bold">
           3. Data cleaning
       </span></summary>
 
@@ -68,7 +68,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 25px; font-weight: bold">
+<summary><span style="font-size: 30px; font-weight: bold">
           4. Descriptive statistics
       </span></summary>
 
@@ -89,7 +89,7 @@
 </details>
 <details>
 <summary>
-    <span style="font-size: 25px; font-weight: bold">
+    <span style="font-size: 30px; font-weight: bold">
      Main Conclusions
 </span>
 
@@ -317,7 +317,9 @@ The PCA shows that economic/health and social/psychological factors are compleme
 <hr>
 
    <span style="font-size: 20px; font-weight: bold">Q3: Finding Unusual Countries (Outliers)</span>
-   <span style="font-size: 16px; font-weight: bold">Are some countries different from their neighbors? </span>
+   
+   > Are some countries different from their neighbors? 
+
    Yes. We found a few countries that do not follow the usual pattern of their region.
 <span style="font-size: 16px; font-weight: bold">Case A: Latin America (The "Wealthy" Exceptions)</span>
 Most Latin American countries have average scores for Wealth and Stability (PC1). However, three countries are much higher. They look more like Western European countries.
@@ -327,7 +329,7 @@ Most Latin American countries have average scores for Wealth and Stability (PC1)
 | Uruguay      | 1.47                         | 0.87             | High Outlier   |
 | Panama       | 1.05                         | 0.87             | High Outlier   |
 
-<b>Conclusion:</b> These countries are richer and have better social support than their neighbors.
+**Conclusion:** These countries are richer and have better social support than their neighbors.
 <hr>
 Case B: South Asia (The "Generous" Exceptions)
 South Asia usually has lower happiness scores. But, three countries have very high scores for Generosity and Freedom (PC2).
@@ -338,5 +340,5 @@ South Asia usually has lower happiness scores. But, three countries have very hi
 | Nepal        | High                            | Low/Average      | Social Outlier  |
 | Uzbekistan   | High                            | Low/Average      | Social Outlier  |
 
-<b>Conclusion:</b> People in these countries feel more free and generous than others in the region, even though their economy is similar.
+**Conclusion:** People in these countries feel more free and generous than others in the region, even though their economy is similar.
 </details>
