@@ -1,5 +1,5 @@
 <details>
-<summary><span style="font-size: 30px; font-weight: bold">
+<summary><span style="font-size: 35px; font-weight: bold">
           0. Authors of the report
       </span></summary>
 
@@ -14,7 +14,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 30px; font-weight: bold">
+<summary><span style="font-size: 35px; font-weight: bold">
           1. Dataset Overview
       </span></summary>
 
@@ -33,7 +33,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 30px; font-weight: bold">
+<summary><span style="font-size: 35px; font-weight: bold">
           2. Dataset Structure
       </span></summary>
 
@@ -52,7 +52,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 30px; font-weight: bold">
+<summary><span style="font-size: 35px; font-weight: bold">
           3. Data cleaning
       </span></summary>
 
@@ -68,7 +68,7 @@
 </details>
 
 <details>
-<summary><span style="font-size: 30px; font-weight: bold">
+<summary><span style="font-size: 35px; font-weight: bold">
           4. Descriptive statistics
       </span></summary>
 
@@ -89,7 +89,7 @@
 </details>
 <details>
 <summary>
-    <span style="font-size: 30px; font-weight: bold">
+    <span style="font-size: 35px; font-weight: bold">
      Main Conclusions
 </span>
 
@@ -293,16 +293,12 @@ New Zealand → high in both PC1 and PC2, leading to high overall happiness..
 PC1 and PC2 help explain why countries with similar material wealth can have different happiness scores, and vice versa.
 The PCA shows that economic/health and social/psychological factors are complementary, and the happiest countries excel in both dimensions.</h4>
 
-<span>
-          
-
-          
-
-
    <span style="font-size: 20px; font-weight: bold">
     <h3> Q1 & Q2: Regional Groups & Patterns</span> </h3>
 <br>
-<span style="font-size: 16px; font-weight: bold">Do countries in the same region stay together? </span>
+
+ > Do countries in the same region stay together?
+
 <br> Yes. As you can see in the plot below, regions form clear groups. This happens because countries in the same region often have similar levels of development.
 <br>
 <ul> 
@@ -321,7 +317,7 @@ The PCA shows that economic/health and social/psychological factors are compleme
    > Are some countries different from their neighbors? 
 
    Yes. We found a few countries that do not follow the usual pattern of their region.
-<span style="font-size: 16px; font-weight: bold">Case A: Latin America (The "Wealthy" Exceptions)</span>
+**Case A**: Latin America (The "Wealthy" Exceptions)
 Most Latin American countries have average scores for Wealth and Stability (PC1). However, three countries are much higher. They look more like Western European countries.
 | Country      | PC1 Score (Wealth/Stability) | Regional Average | Status         |
 | :----------- | :--------------------------- | :--------------- | :------------- |
