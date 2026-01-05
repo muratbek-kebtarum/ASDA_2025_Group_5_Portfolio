@@ -5,7 +5,7 @@
 
 | Name | Contribution |
 | :--- | :--- |
-|Ahmed|  |
+|Ahmed|Data analysis, Visualization,Report |
 |Akash|  |
 |Ilyas|  |
 |Murat|Data analysis, Visualization, Report assembly|
@@ -92,9 +92,215 @@
     <span style="font-size: 25px; font-weight: bold">
      Main Conclusions
 </span>
+
+          
 </summary>
+<span>
+          <h3>Explained Variance Ratio Across Principal Components </h3>
+          
+![PCA Plot](../additional_material/visualizations/week10/PCA_VAR.png)
+<p>
+           PC1 and PC2 are the dominant dimensions of this dataset, collectively capturing approximately 72% of the total variance
+ </p>
+
+</span>
+
+<span>
+          <h3>Pca Analysis</h3>
+          
+![PCA Plot](../additional_material/visualizations/week10/PCA_BIPLOT.png)
+![PCA Plot](../additional_material/visualizations/week10/Feature_Countribution_Pca.png)
+<p>
+          Global happiness is structured by multiple dimensions, with economic development as the primary axis and institutional–social factors as a secondary but important dimension.
+</p>
+
+<p>
+PC1 seems to capture the overall socio-economic and health well-being of a country. Higher values of PC1 correspond to countries with higher GDP, better life expectancy,                  stronger social support, and lower perceived corruption, which are all positively associated with happiness.
+
+Strong contributors:
+- gdp_per_capita (0.505)
+- healthy_life_expectancy (0.507)
+- social_support (0.468)
+
+These three factors are highly correlated and form a “material and health well-being” cluster. Countries with higher GDP, better health, and stronger social support naturally tend to have higher happiness scores.
+Key insight: Wealth, health, and social infrastructure reinforce each other—improvements in one often accompany improvements in the others.
+</p>
+
+PC2 represents a more social/psychological dimension of happiness. High values of PC2 are associated with countries where generosity, perceived freedom, and lower corruption stand out, even if GDP and life expectancy are lower. In contrast, countries with high GDP and health might have lower PC2 if generosity or freedom are weaker.
+
+Strong contributors:
+
+- generosity (0.678)
+
+- corruption_perception (0.473)
+
+- freedom_of_choice (0.352)
+
+These factors are less about material well-being and more about social norms, ethics, and personal freedoms. High generosity, low perceived corruption, and freedom tend to go together as a “social-psychological well-being” dimension.
+
+Key insight: Countries may be wealthy (high PC1) but low on PC2 if they lack generosity or freedom. These factors reflect happiness in a different, non-material sense.
+
+</span>
+<span>
+          <h3>Top 5 Countries in Hapiness Score</h3>
+        
+![PCA Plot](../additional_material/visualizations/week10/Top_5_Countries.png)
+<p>Economic/health well-being is a strong predictor of high happiness among top countries.
+The PCA shows that both dimensions are important, but for the top happiest countries, PC1 (material/health) dominates.
+</p>
+          <table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Happiness Score</th>
+      <th>PC1</th>
+      <th>PC2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Finland</td>
+      <td>7.632</td>
+      <td>3.214870</td>
+      <td>1.151421</td>
+    </tr>
+    <tr>
+      <td>Norway</td>
+      <td>7.594</td>
+      <td>3.305339</td>
+      <td>1.396784</td>
+    </tr>
+    <tr>
+      <td>Denmark</td>
+      <td>7.555</td>
+      <td>3.421553</td>
+      <td>1.771251</td>
+    </tr>
+    <tr>
+      <td>Iceland</td>
+      <td>7.495</td>
+      <td>2.733791</td>
+      <td>0.821269</td>
+    </tr>
+    <tr>
+      <td>Switzerland</td>
+      <td>7.487</td>
+      <td>3.302394</td>
+      <td>1.200969</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Top 5 Countries in PCA1</h4>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>Happiness Score</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3.741241</td>
+      <td>1.583647</td>
+      <td>6.343</td>
+      <td>Singapore</td>
+    </tr>
+    <tr>
+      <td>3.421553</td>
+      <td>1.771251</td>
+      <td>7.555</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <td>3.354731</td>
+      <td>2.247588</td>
+      <td>7.324</td>
+      <td>New Zealand</td>
+    </tr>
+    <tr>
+      <td>3.305339</td>
+      <td>1.396784</td>
+      <td>7.594</td>
+      <td>Norway</td>
+    </tr>
+    <tr>
+      <td>3.302394</td>
+      <td>1.200969</td>
+      <td>7.487</td>
+      <td>Switzerland</td>
+    </tr>
+  </tbody>
+</table>
+<p>Happiness scores are mostly high when pc1 is high, but note Singapore (6.343) has moderate happiness despite very high PC1 → indicates that material well-being alone doesn’t guarantee the highest happiness.
+</p>
+
+
+<h4>Top 5 Countries in PCA2</h4>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>Happiness Score</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.381777</td>
+      <td>3.822219</td>
+      <td>4.308</td>
+      <td>Myanmar</td>
+    </tr>
+    <tr>
+      <td>-1.751452</td>
+      <td>3.211842</td>
+      <td>4.982</td>
+      <td>Somalia</td>
+    </tr>
+    <tr>
+      <td>-0.029708</td>
+      <td>2.998874</td>
+      <td>3.408</td>
+      <td>Rwanda</td>
+    </tr>
+    <tr>
+      <td>3.354731</td>
+      <td>2.247588</td>
+      <td>7.324</td>
+      <td>New Zealand</td>
+    </tr>
+    <tr>
+      <td>1.693869</td>
+      <td>2.143325</td>
+      <td>6.096</td>
+      <td>Uzbekistan</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+Myanmar, Somalia, Rwanda → very high PC2 but low happiness scores → suggests that social/psychological factors alone cannot fully explain happiness if material/health factors are very low (low PC1).
+New Zealand → high in both PC1 and PC2, leading to high overall happiness..
+</p>
+
+<h4>Happiness is multidimensional.
+PC1 and PC2 help explain why countries with similar material wealth can have different happiness scores, and vice versa.
+The PCA shows that economic/health and social/psychological factors are complementary, and the happiest countries excel in both dimensions.</h4>
+
+<span>
+          
+
+          
+
+
    <span style="font-size: 20px; font-weight: bold">
-    Q1 & Q2: Regional Groups & Patterns</span>
+    <h3> Q1 & Q2: Regional Groups & Patterns</span> </h3>
 <br>
 <span style="font-size: 16px; font-weight: bold">Do countries in the same region stay together? </span>
 <br> Yes. As you can see in the plot below, regions form clear groups. This happens because countries in the same region often have similar levels of development.
@@ -106,6 +312,7 @@
 <br>
 
  ![PCA Plot](../additional_material/visualizations/week10/world_hapiness_pca_region.png)
+ 
 
 <hr>
 
