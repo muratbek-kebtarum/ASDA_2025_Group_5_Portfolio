@@ -317,6 +317,7 @@ The PCA shows that economic/health and social/psychological factors are compleme
    > Are some countries different from their neighbors? 
 
    Yes. We found a few countries that do not follow the usual pattern of their region.
+   <br>
 **Case A**: Latin America (The "Wealthy" Exceptions)
 Most Latin American countries have average scores for Wealth and Stability (PC1). However, three countries are much higher. They look more like Western European countries.
 | Country      | PC1 Score (Wealth/Stability) | Regional Average | Status         |
@@ -327,7 +328,8 @@ Most Latin American countries have average scores for Wealth and Stability (PC1)
 
 **Conclusion:** These countries are richer and have better social support than their neighbors.
 <hr>
-Case B: South Asia (The "Generous" Exceptions)
+
+**Case B:** South Asia (The "Generous" Exceptions)
 South Asia usually has lower happiness scores. But, three countries have very high scores for Generosity and Freedom (PC2).
 
 | Country      | PC2 Score (Generosity/Freedom) | Regional Average | Status          |
