@@ -6,7 +6,7 @@
 | Name | Contribution |
 | :--- | :--- |
 |Ahmed|Data analysis, Visualization,Report |
-|Akash| Review |
+|Akash| |
 |Ilyas|  |
 |Murat|Data analysis, Visualization, Report assembly|
 |Viktoria|Review  |
