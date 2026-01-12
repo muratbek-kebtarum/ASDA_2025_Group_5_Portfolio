@@ -66,14 +66,16 @@ A three-step visual analysis was performed. This ensures the playlists come from
 Two different metrics helped find the best number of clusters.
 
 **A. The Elbow Method (Inertia)**
-![Elbow Method Plot](elbow.png)
+![Elbow Method Plot](../additional_material/visualizations/week11/Elbow.png)
 * **Visual Analysis:** The plot above shows that "Inertia" (sum of squared distances) goes down as more clusters are added.
-* **Reasoning:** A clear "elbow" bend appears at **k=3**. Before this point, the value drops quickly. This means splitting the data adds value. After k=3, the line becomes flat. Adding a 4th or 5th playlist would not improve the result much.
+* **Reasoning:** After $K=4$, the line begins to flatten out. This tells us that adding a 5th or 6th playlist doesn't significantly improve the "tightness" of the groups. $K=4$ is the point of maximum efficiency..
 
 **B. Silhouette Score Analysis**
-![Silhouette Score Plot](./silhouetta.png)
+![Silhouette Score Plot](../additional_material/visualizations/week11/Silhouette.png)
 * **Visual Analysis:** The Silhouette Score measures how well-separated the clusters are (from -1 to +1).
-* **Reasoning:** The graph shows a high point at **k=3** (Score $\approx$ 0.31). k=4 is close, but the score drops at k=5. Simple models are usually better, so **k=3** is the best choice based on the math.
+* **Reasoning:** While $K=2$ has the highest score, it is too broad for a professional music library. Looking at the other options, there is a clear local peak at $K=4$. The score then drops significantly at $K=5$, meaning a 5-cluster model would result in "blurry" playlists that overlap too much..
+
+**Conclusion: K=4** It provides the best balance between having enough variety (more than 2 or 3 groups) and maintaining high musical distinctness (a peak in the score).
 
 ---
 
@@ -81,16 +83,22 @@ Two different metrics helped find the best number of clusters.
 After grouping the songs into 3 lists, **Principal Component Analysis (PCA)** visualized them in 2D space. This "Biplot" explains why each playlist is unique.
 
 **C. PCA Biplot**
-![PCA Biplot](pca_biplot.png)
+![PCA Biplot](../additional_material/visualizations/week11/Kmeans.png)
 
 
-* **Visual Analysis:**
+**Visual Analysis:**
     * The dots represent songs, colored by their group.
-    * The red arrows represent specific audio features (e.g., Energy, Acousticness).
-* **Reasoning & Interpretation:**
-    1.  **Separation:** The three clusters are in different parts of the graph. There is very little overlap. This confirms that the algorithm found three unique musical styles.
-    2.  **Cluster 0 (Purple - "Acoustic"):** This group is on the far left. It is opposite the "Energy" and "Loudness" arrows. This shows that these songs are quiet, not intense.
-    3.  **Cluster 1 vs. Cluster 2:** Both groups are on the right side (High Energy). However, they are separated vertically. The arrows show that this separation happens because of **Mode** (Major vs. Minor key) and **Valence** (Happiness). This explains the two high-energy playlists: one is "Happy/Party" (Major) and the other is "Intense/Focus" (Minor).
+    * The black arrows represent specific audio features (e.g., Energy, Acousticness).
+**Interpretation:**
+  
+Musical Synergy: Several features show strong positive correlation by pointing in the same direction. Danceability and Valence are nearly aligned, indicating that rhythmic tracks in this dataset are frequently associated with a positive, "happy" mood. Similarly, Energy and Loudness load together, capturing the high-intensity, "electric" side of the spectrum.
+
+Speech and Rhythm: The proximity of Tempo and Speechiness suggests that faster tracks tend to be more vocal-heavy or contain rhythmic speech patterns, a common trait in genres like Rap or fast-paced Pop.
+
+Opposing Musical Dimensions
+
+Acoustic vs. Electric: A primary axis of contrast is formed by Acousticness pointing in the opposite direction of Energy and Loudness. 
+Complexity vs. Groove: Instrumentalness points away from Danceability and Valence. 
 
 ## 6. AI disclaimer
 AI tools helped improve the structure, visualizations, and code in this report. The main analysis and results are the author's own work.
