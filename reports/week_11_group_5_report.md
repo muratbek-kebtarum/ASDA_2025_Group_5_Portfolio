@@ -5,21 +5,19 @@
 |Ahmed|Data analysis, Visualization,Report |
 |Akash| |
 |Ilyas| |
-|Murat||
+|Murat|Data analysis, Visualization, Report assembly|
 |Viktoria|Evaluation of clustering results |
 
 ## 1. Dataset Overview
 | Item | Description |
 | :--- | :--- |
-| Dataset name | |
-| Time period | |
-| Sampling frequency | |
-| Number of rows | |
-| Number of columns | |
-| File format (.csv, .txt, etc) | |
-| Dataset creator | |
-| Source (name) | |
-| Source (link) | |
+| Dataset name | Spotify Tracks Dataset |
+| Number of rows | 5,235 |
+| Number of columns | 17 |
+| File format (.csv, .txt, etc) | .csv |
+| Dataset creator | Spotify (via Web API) / Maharshi Pandya (Kaggle uploader) |
+| Source (name) | Kaggle |
+| Source (link) | [Spotify Tracks Dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset) |
 
 ## 2. Dataset Structure
 
@@ -125,6 +123,12 @@ The visible separation between clusters indicates that the clustering approach e
 | cluster 3         | 0.261065     | 0.913571| 5.370079| -7.929703  | 0.686789| 0.111001    | 0.007707     | 0.554002         | 0.193070 | 0.218243| 120.480075 |
 | cluster 4         | 0.653313     | 0.737755| 5.243800| -6.281748  | 0.618466| 0.086861    | 0.148020     | 0.053431         | 0.177238 | 0.594054| 123.120411 |
 
+| Playlist | URL |
+| :--- | :--- |
+| **Playlist 1** |https://open.spotify.com/playlist/1iH9U5QSZWZj7i18ac2ovB|
+| **Playlist 2** | https://open.spotify.com/playlist/4N5esHUXA2f9QFnI9Axczs|
+| **Playlist 3** | https://open.spotify.com/playlist/14d4ypP8sOCt28pB2nNAon|
+| **Playlist 4** | https://open.spotify.com/playlist/0eNFYucbcpVDtczntkE1kY|
 
 ## 6. AI disclaimer
 AI tools helped improve the structure, visualizations, and code in this report. The main analysis and results are the author's own work.
