@@ -6,7 +6,7 @@
 |Akash| |
 |Ilyas| |
 |Murat||
-|Viktoria| |
+|Viktoria|Evaluation of clustering results |
 
 ## 1. Dataset Overview
 | Item | Description |
