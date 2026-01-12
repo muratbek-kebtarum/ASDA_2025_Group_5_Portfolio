@@ -123,12 +123,14 @@ The visible separation between clusters indicates that the clustering approach e
 | cluster 3         | 0.261065     | 0.913571| 5.370079| -7.929703  | 0.686789| 0.111001    | 0.007707     | 0.554002         | 0.193070 | 0.218243| 120.480075 |
 | cluster 4         | 0.653313     | 0.737755| 5.243800| -6.281748  | 0.618466| 0.086861    | 0.148020     | 0.053431         | 0.177238 | 0.594054| 123.120411 |
 
+# Playlists
+
 | Playlist | URL |
 | :--- | :--- |
-| **Playlist 1** |https://open.spotify.com/playlist/1iH9U5QSZWZj7i18ac2ovB|
-| **Playlist 2** | https://open.spotify.com/playlist/4N5esHUXA2f9QFnI9Axczs|
-| **Playlist 3** | https://open.spotify.com/playlist/14d4ypP8sOCt28pB2nNAon|
-| **Playlist 4** | https://open.spotify.com/playlist/0eNFYucbcpVDtczntkE1kY|
+| ![Piano](../additional_material/visualizations/week11/logos/piano.png) |https://open.spotify.com/playlist/1iH9U5QSZWZj7i18ac2ovB|
+| ![Classic](../additional_material/visualizations/week11/logos/classic1.png)| https://open.spotify.com/playlist/4N5esHUXA2f9QFnI9Axczs|
+| ![Dance](../additional_material/visualizations/week11/logos/dance.png) | https://open.spotify.com/playlist/14d4ypP8sOCt28pB2nNAon|
+| ![Hell](../additional_material/visualizations/week11//logos/hell.png)| https://open.spotify.com/playlist/0eNFYucbcpVDtczntkE1kY|
 
 ## 6. AI disclaimer
 AI tools helped improve the structure, visualizations, and code in this report. The main analysis and results are the author's own work.
