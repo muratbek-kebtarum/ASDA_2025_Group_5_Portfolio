@@ -1,5 +1,12 @@
-report_content = """## 0. Report Authors
+## 0. Report Authors
 
+| Name | Contribution |
+| :--- | :--- |
+|Ahmed|Data analysis, Visualization,Report |
+|Akash| |
+|Ilyas| |
+|Murat||
+|Viktoria| |
 
 ## 1. Dataset Overview
 | Item | Description |
@@ -79,7 +86,7 @@ Two different metrics helped find the best number of clusters.
 
 ---
 
-### 5.2 Step 2: Interpreting the Playlists (PCA Biplot)
+### 5.2 Step 2: Interpreting the Playlists
 After grouping the songs into 3 lists, **Principal Component Analysis (PCA)** visualized them in 2D space. This "Biplot" explains why each playlist is unique.
 
 **C. PCA Biplot**
@@ -99,6 +106,25 @@ Opposing Musical Dimensions
 
 Acoustic vs. Electric: A primary axis of contrast is formed by Acousticness pointing in the opposite direction of Energy and Loudness. 
 Complexity vs. Groove: Instrumentalness points away from Danceability and Valence. 
+
+
+**D.Dendrogram**
+
+![PCA Biplot](../additional_material/visualizations/week11/Dendrogram.png)
+
+The cut was chosen at 71 where there is a noticeable vertical gap in the dendrogram.
+
+![PCA Biplot](../additional_material/visualizations/week11/Pca_final.png)
+
+The visible separation between clusters indicates that the clustering approach effectively captured meaningful structure in the data. While minor overlap appears at the cluster boundaries, the overall compactness and separation suggest that the selected audio features successfully differentiate songs with distinct musical characteristics, supporting the validity of the chosen clustering method and dendrogram cut.
+
+| h_cluster | danceability | energy  | key     | loudness   | mode    | speechiness | acousticness | instrumentalness | liveness | valence | tempo      |
+|-----------|--------------|---------|---------|------------|---------|-------------|--------------|------------------|----------|---------|------------|
+| cluster 1         | 0.314832     | 0.120320| 5.216110| -22.005690 | 0.622790| 0.044855    | 0.943530     | 0.844512         | 0.118912 | 0.147405| 106.723181 |
+| cluster 2         | 0.550332     | 0.369297| 5.128205| -12.164277 | 0.704453| 0.046189    | 0.712235     | 0.091994         | 0.151296 | 0.489396| 109.234738 |
+| cluster 3         | 0.261065     | 0.913571| 5.370079| -7.929703  | 0.686789| 0.111001    | 0.007707     | 0.554002         | 0.193070 | 0.218243| 120.480075 |
+| cluster 4         | 0.653313     | 0.737755| 5.243800| -6.281748  | 0.618466| 0.086861    | 0.148020     | 0.053431         | 0.177238 | 0.594054| 123.120411 |
+
 
 ## 6. AI disclaimer
 AI tools helped improve the structure, visualizations, and code in this report. The main analysis and results are the author's own work.
