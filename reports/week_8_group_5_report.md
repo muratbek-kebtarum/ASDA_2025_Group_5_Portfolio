@@ -2,7 +2,7 @@
 | Name | Contribution |
 | :--- | :--- |
 |Ahmed|Report Participation & Date Cleaning & Data Visalizations &  Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model|
-|Akash|  |
+|Akash|Review and checking structure  |
 |Ilyas| Data filling and review |
 |Murat| Managed the team tasks and prepared the report. Cleaned the data and created features for the time of day. Built the Negative Binomial GLM and compared it against OLS and Poisson baselines to find the best model.|
 |Viktoria| Descriptive statistics  |
