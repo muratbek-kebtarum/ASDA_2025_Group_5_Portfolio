@@ -9,7 +9,7 @@
 |Akash| |
 |Ilyas|  |
 |Murat| Data analysis, Visualization, Report assembly|
-|Viktoria|  |
+|Viktoria|Evaluation of data preparation steps  |
 
 </details>
 
