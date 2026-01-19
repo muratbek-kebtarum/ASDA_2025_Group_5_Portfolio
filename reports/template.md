@@ -56,5 +56,3 @@
 | 50%                    |                |             |             |             |             |
 | 75%                    |                |             |             |             |             |
 | Max                    |                |             |             |             |             |
-| Variance               |                |             |             |             |             |
-| Dispersion index (Variance / Mean)|                |             |             |             |             |
