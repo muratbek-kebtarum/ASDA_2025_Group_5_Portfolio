@@ -5,7 +5,7 @@
 
 | Name | Contribution |
 | :--- | :--- |
-|Ahmed||
+|Ahmed|Data analysis, SVM, Visualization, Report|
 |Akash| |
 |Ilyas|  |
 |Murat| Data analysis, Visualization, Report assembly|
@@ -89,6 +89,41 @@
 
 ### 5.1 Model Performance (Red vs. White)
 Two Support Vector Machine (SVM) models were trained to classify wine color. The results were nearly identical.
+
+#### 1. RB Kernel:
+
+![Confusion Matrix](../additional_material/visualizations/week12/cm_radial_svm.png)
+
+The Tuned Linear SVM is an excellent fit for this dataset. The high degree of accuracy and the balanced performance between classes suggest that the tuning process was successful and that the features provided are highly discriminative for distinguishing between red and white categories.
+
+##### Classification Report
+
+| Class        | Precision | Recall | F1-score | Support |
+|-------------|-----------|--------|----------|---------|
+| Red         | 0.995     | 0.990  | 0.993    | 205     |
+| White       | 0.997     | 0.998  | 0.998    | 627     |
+| Accuracy    | 0.996          | 0.996       | 0.996    | 0.996     |
+| Macro Avg   | 0.996     | 0.994  | 0.995    | 832     |
+| Weighted Avg| 0.996     | 0.996  | 0.996    | 832     |
+
+#### 2. Linear Kernel:
+
+![Confusion Matrix](../additional_material/visualizations/week12/cm_linear_svm.png)
+
+##### Classification Report
+
+| Class        | Precision | Recall | F1-score | Support |
+|--------------|-----------|--------|----------|---------|
+| Red          | 0.990     | 0.990  | 0.990    | 205.000 |
+| White        | 0.997     | 0.997  | 0.997    | 627.000 |
+| Accuracy     | 0.995     | 0.995  | 0.995    | 0.995   |
+| Macro Avg    | 0.994     | 0.994  | 0.994    | 832.000 |
+| Weighted Avg | 0.995     | 0.995  | 0.995    | 832.000 |
+
+#### Top 10 Features
+
+![Confusion Matrix](../additional_material/visualizations/week12/top10.png)
+
 
 **Table 1: Model Comparison (Internal Test Set)**
 
