@@ -90,7 +90,7 @@
 ### 5.1 Model Performance (Red vs. White)
 Two Support Vector Machine (SVM) models were trained to classify wine color. The results were nearly identical.
 
-#### 1. RB Kernel:
+#### 5.1.1 RB Kernel:
 
 ![Confusion Matrix](../additional_material/visualizations/week12/cm_radial_svm.png)
 
@@ -106,7 +106,7 @@ The Tuned Linear SVM is an excellent fit for this dataset. The high degree of ac
 | Macro Avg   | 0.996     | 0.994  | 0.995    | 832     |
 | Weighted Avg| 0.996     | 0.996  | 0.996    | 832     |
 
-#### 2. Linear Kernel:
+#### 5.1.2 Linear Kernel:
 
 ![Confusion Matrix](../additional_material/visualizations/week12/cm_linear_svm.png)
 
