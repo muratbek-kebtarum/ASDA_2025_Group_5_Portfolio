@@ -8,7 +8,7 @@
 |Ahmed||
 |Akash| |
 |Ilyas|  |
-|Murat||
+|Murat| Data analysis, Visualization, Report assembly|
 |Viktoria|  |
 
 </details>
@@ -146,5 +146,8 @@ The chart below shows where the model makes mistakes. The overlap between classe
 
 </details>
 
-
-
+<details>
+<summary>
+    <span style="font-size: 35px; font-weight: bold"> 6. AI disclaimer</span></summary>
+AI tools helped improve the structure, visualizations, and code in this report. The main analysis and results are the author's own work.
+</details>
