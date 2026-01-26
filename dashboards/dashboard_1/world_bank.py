@@ -2,6 +2,11 @@
 # requires-python = ">=3.13"
 # dependencies = [
 #     "marimo>=0.19.6",
+#     "altair",
+#     "marimo",
+#     "pandas",
+#     "statsmodels",
+#     "scipy",
 # ]
 # ///
 import marimo
