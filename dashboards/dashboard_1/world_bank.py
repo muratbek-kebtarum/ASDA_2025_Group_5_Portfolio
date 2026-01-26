@@ -17,7 +17,7 @@
 import marimo
 
 __generated_with = "0.19.4"
-app = marimo.App(width="full")
+app = marimo.App(width="full", app_title="GROUP-5")
 
 
 @app.cell(hide_code=True)
