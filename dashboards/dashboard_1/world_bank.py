@@ -10,7 +10,7 @@
 #     "seaborn",       
 #     "matplotlib",  
 #     "numpy",
-#.    "openpyxl",
+#     "openpyxl",
 # ]
 # ///
 
