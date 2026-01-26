@@ -47,7 +47,7 @@ def _():
 @app.cell
 def _(pd):
     df1=pd.read_csv("https://raw.githubusercontent.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/refs/heads/main/additional_material/datasets/week5/world_bank_development_indicators.csv")
-    df2=pd.read_excel("https://github.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/raw/refs/heads/main/additional_material/datasets/week5/income.xlsx?raw=true", engine='openpyxl')
+    df2=pd.read_excel("https://raw.githubusercontent.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/main/additional_material/datasets/week5/income.xlsx", engine='openpyxl')
     df = pd.merge(df1, df2, left_on='country', right_on='Economy', how="inner")
     return (df,)
 
