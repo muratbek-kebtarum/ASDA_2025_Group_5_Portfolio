@@ -10,15 +10,11 @@
 #     "seaborn",       
 #     "matplotlib",  
 #     "numpy",
+#.    "openpyxl",
 # ]
 # ///
+
 import marimo
-import pandas
-import altair
-import statsmodels.api
-import scipy
-import seaborn      
-import matplotlib
 
 __generated_with = "0.19.4"
 app = marimo.App()
@@ -50,8 +46,8 @@ def _():
 
 @app.cell
 def _(pd):
-    df1=pd.read_csv("../../additional_material/datasets/week5/world_bank_development_indicators.csv")
-    df2=pd.read_excel("../../additional_material/datasets/week5/income.xlsx")
+    df1=pd.read_csv("https://raw.githubusercontent.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/refs/heads/main/additional_material/datasets/week5/world_bank_development_indicators.csv")
+    df2=pd.read_excel("https://github.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/raw/refs/heads/main/additional_material/datasets/week5/income.xlsx?raw=true", engine='openpyxl')
     df = pd.merge(df1, df2, left_on='country', right_on='Economy', how="inner")
     return (df,)
 
@@ -717,7 +713,7 @@ def _(mo):
 def _(pd):
     import altair as alt
 
-    life_df = pd.read_csv("Human-well-being-health.csv")
+    life_df = pd.read_csv("https://raw.githubusercontent.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/refs/heads/main/dashboards/dashboard_1/Human-well-being-health.csv")
 
     return alt, life_df
 
