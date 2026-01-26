@@ -286,7 +286,7 @@ def _(mo):
 def _(mo):
     min_missing_pct = mo.ui.slider(
         start=0,
-        stop=100,
+        stop=24,
         step=5,
         value=0,
         label="Minimum missing percentage"
@@ -408,7 +408,6 @@ def _(mo):
     )
 
     selected_group
-
     return (selected_group,)
 
 
@@ -438,14 +437,13 @@ def _(group_counts, plt, selected_group, sns):
     plt.tight_layout()
 
     fig
-
     return
 
 
 @app.cell
 def _(mo):
     mo.md(r"""
-    ##Does CO2 emission per capita differ across income groups?
+    ## Research Question 1: Does CO2 emission per capita differ across income groups?
     Variables:
 
     DV (dependent variable) → co2_emissions
@@ -564,7 +562,6 @@ def _(mo):
 
     selected_groups
 
-
     return income_groups, selected_groups
 
 
@@ -592,7 +589,6 @@ def _(df_co2, income_groups, plt, selected_groups, sns):
     plt.tight_layout()
 
     fig3  
-
     return
 
 
@@ -628,7 +624,6 @@ def _(model, plt, sns):
     plt.tight_layout()
 
     fig4  # last line → renders in Marimo View mode
-
     return
 
 
@@ -681,20 +676,305 @@ def _(df_co2, pairwise_tukeyhsd, pd, selected_groupss):
     # Convert results to dataframe for clean display
     tukey_df = pd.DataFrame(data=tukey.summary().data[1:], columns=tukey.summary().data[0])
     tukey_df
-
     return
 
 
 @app.cell
 def _(mo):
     mo.md(r"""
-    ### Conclusion
+    ### Conclusion to Research Question 1
     Income group has a very strong effect on CO₂ emissions,and here is the results
 
     High-income countries emit significantly more CO₂ per capita than Low and Lower-Middle income countries.
     Upper-Middle income countries emit significantly more than Low-income countries.
     Income groups in the middle (Low ↔ Lower-Middle ↔ Upper-Middle) do NOT differ much.
     Upper-Middle countries are surprisingly close to High-income countries (no significant difference).
+    """)
+    return
+
+
+@app.cell
+def _(pd):
+    import altair as alt
+
+    life_df = pd.read_csv("Human-well-being-health.csv")
+
+    return alt, life_df
+
+
+@app.cell
+def _(life_df):
+    lean_df = life_df.dropna(subset=[
+        'government_health_expenditure_percent', 
+        'life_expectancy_at_birth',
+        'continent',
+        'income_group'
+    ])
+    return (lean_df,)
+
+
+@app.cell
+def _():
+    #lean_df.isnull().sum()
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    ##Research Question 2: To what extent does a country's income classification significantly influence key development indicators, such as life expectancy and health expenditure?
+    """)
+    return
+
+
+@app.cell
+def _(alt, lean_df):
+
+    # 1. Create a "selection" tool
+    # This tells Altair to listen for clicks based on the 'continent' field
+    click_selection = alt.selection_multi(fields=['continent'])
+
+    # 2. The Scatter Plot (The Main View)
+    scatter2 = alt.Chart(lean_df).mark_circle(size=60).encode(
+        x=alt.X('government_health_expenditure_percent', title='Health Expenditure (%)'),
+        y=alt.Y('life_expectancy_at_birth', scale=alt.Scale(domain=[50, 90]), title='Life Expectancy'),
+    
+        # The Magic Trick:
+        # If a point is selected, color it by continent.
+        # If NOT selected, turn it gray.
+        color=alt.condition(click_selection, 'continent', alt.value('lightgray')),
+        tooltip=['country', 'life_expectancy_at_birth']
+    ).properties(
+        width=400,
+        title="Health vs Life Expectancy"
+    )
+
+    # 3. The Bar Chart (The Filter)
+    bars2 = alt.Chart(lean_df).mark_bar().encode(
+        x='count()',
+        y='continent',
+        color=alt.condition(click_selection, 'continent', alt.value('lightgray'))
+    ).add_selection(
+        click_selection # <--- We attach the click tool to this chart
+    ).properties(
+        width=200,
+        title="Click a bar to filter"
+    )
+
+    # 4. Combine them side-by-side using the '|' symbol
+    scatter2 | bars2
+    return
+
+
+@app.cell
+def _(alt, lean_df):
+
+    # 1. Create the "brush" tool
+    # "interval" means we are selecting a range (an area), not just a single point
+    brush = alt.selection_interval()
+
+    # 2. The Scatter Plot (Where you draw the box)
+    scatter = alt.Chart(lean_df).mark_circle(size=60).encode(
+        x=alt.X('government_health_expenditure_percent', title='Health Expenditure (%)'),
+        y=alt.Y('life_expectancy_at_birth', scale=alt.Scale(domain=[50, 90]), title='Life Expectancy'),
+        color=alt.condition(brush, 'continent', alt.value('lightgray')),
+        tooltip=['country']
+    ).add_selection(
+        brush  # <--- Attach the brush here!
+    ).properties(
+        width=400,
+        title="Drag a box on this chart!"
+    )
+
+    # 3. The Bar Chart (Reacts to the box)
+    bars = alt.Chart(lean_df).mark_bar().encode(
+        x='count()',
+        y='continent',
+        color='continent'
+    ).transform_filter(
+        brush # <--- This filters the bars based on your box!
+    ).properties(
+        width=300,
+        title="2. See counts update here"
+    )
+
+    # 4. Show them side-by-side
+    scatter | bars
+    return
+
+
+@app.cell
+def _(alt, lean_df):
+
+    # 1. New Working URL (GeoJSON format)
+    # This file contains country shapes AND names
+    world_map_url = "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json"
+
+    # 2. Define the source
+    # Since it is GeoJSON, we use alt.Data instead of alt.topo_feature
+    source = alt.Data(url=world_map_url, format=alt.DataFormat(property='features', type='json'))
+
+    # 3. Build the Map
+    map_chart = alt.Chart(source).mark_geoshape().encode(
+        # Color: Use the Life Expectancy column
+        color=alt.Color('life_expectancy_at_birth:Q', title='Life Expectancy', scale=alt.Scale(scheme='viridis')),
+    
+        # Tooltips: Show Country Name and Value
+        tooltip=[
+            alt.Tooltip('properties.name:N', title='Country'),
+            alt.Tooltip('life_expectancy_at_birth:Q', title='Life Expectancy')
+        ]
+    ).transform_lookup(
+        # Match 'properties.name' in the map file...
+        lookup='properties.name',
+    
+        # ...with 'country' in your dataframe
+        from_=alt.LookupData(lean_df, key='country', fields=['life_expectancy_at_birth'])
+    ).project(
+        type='naturalEarth1'
+    ).properties(
+        width=600,
+        height=400,
+        title="Global Life Expectancy"
+    )
+
+    map_chart
+    return
+
+
+@app.cell
+def _(mo):
+
+    # 1. Define the metrics we want to analyze
+    # (Label -> Column Name)
+    analysis_options = {
+        'Life Expectancy (Years)': 'life_expectancy_at_birth',
+        'Health Spending (% GDP)': 'government_health_expenditure_percent',
+        'Access to Electricity (%)': 'access_to_electricity_percent',
+        'Corruption Control': 'control_of_corruption_estimate',
+    }
+
+    # 2. Create the Selector
+    analysis_selector = mo.ui.dropdown(
+        options=analysis_options,
+        value='Life Expectancy (Years)',
+        label="Select Variable to Analyze"
+    )
+
+    analysis_selector
+    return analysis_options, analysis_selector
+
+
+@app.cell
+def _(
+    alt,
+    analysis_options,
+    analysis_selector,
+    lean_df,
+    mo,
+    ols,
+    pairwise_tukeyhsd,
+    pd,
+    sm,
+):
+
+
+    # 1. Get the User Selection
+    # Get the selected column name (e.g., 'life_expectancy_at_birth')
+    col_name = analysis_selector.value
+
+    # Find the nice label for the title (e.g., 'Life Expectancy')
+    # We look through the dictionary to find the Key that matches this Value
+    chart_title = [k for k, v in analysis_options.items() if v == col_name][0]
+
+    # 2. Prepare Data (Clean & Order)
+    # FIXED LINE BELOW: Removed the extra quote after col_name
+    work_df = lean_df[['income_group', col_name, 'country']].dropna()
+
+    # Set the correct order for the x-axis
+    group_order = ['Low', 'Lower_middle', 'Upper_middle', 'High']
+    # Filter data to only include these 4 groups
+    work_df = work_df[work_df['income_group'].isin(group_order)]
+
+    # 3. Create the Charts
+    # A. The Boxplot (Shows the ranges)
+    boxplot = alt.Chart(work_df).mark_boxplot(extent='min-max', size=40).encode(
+        x=alt.X('income_group', sort=group_order, title='Income Group'),
+        y=alt.Y(col_name, title=chart_title),
+        color=alt.Color('income_group', legend=None)
+    )
+
+    # B. The Jitter Points (Shows the individual countries)
+    points = alt.Chart(work_df).mark_circle(size=60, opacity=0.6).encode(
+        x=alt.X('income_group', sort=group_order),
+        y=alt.Y(col_name),
+        color=alt.Color('income_group'),
+        tooltip=['country', col_name, 'income_group']
+    ).interactive()
+
+    # Combine them
+    combined_chart = (boxplot + points).properties(
+        width=600, 
+        height=400, 
+        title=f"Distribution of {chart_title}"
+    )
+
+    # 4. Run the Statistics (Dynamic ANOVA)
+    # This runs the math to prove if the groups are actually different
+    formula = f'Q("{col_name}") ~ C(income_group)'
+    model_ = ols(formula, data=work_df).fit()
+    anova_table_ = sm.stats.anova_lm(model_, typ=3)
+    p_val = anova_table_.loc['C(income_group)', 'PR(>F)']
+
+    # 5. Prepare the Output
+    stats_results = []
+    tukey_display = None
+
+    if p_val < 0.05:
+        result_text = f"### Significant Difference (p = {p_val:.2e})"
+    
+        # Run Tukey HSD
+        tukey_ = pairwise_tukeyhsd(endog=work_df[col_name], groups=work_df['income_group'], alpha=0.05)
+    
+        # Convert to DataFrame for nice display
+        # We extract the data directly from the Tukey object
+        tukey_data = pd.DataFrame(
+            data=tukey_._results_table.data[1:], 
+            columns=tukey_._results_table.data[0]
+        )
+        # Filter for significant rows only
+        sig_diffs = tukey_data[tukey_data['reject'] == True]
+    
+        tukey_display = mo.vstack([
+            mo.md("**Tukey Test Results (Significant Pairs Only):**"),
+            mo.ui.table(sig_diffs, selection=None)
+        ])
+    else:
+        result_text = f"### ❌ No Significant Difference (p = {p_val:.4f})"
+        tukey_display = mo.md("Groups are statistically similar.")
+
+    # 6. Final Display
+    mo.vstack([
+        combined_chart,
+        mo.md("---"),
+        mo.md(result_text),
+        tukey_display
+    ])
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    ### Conclusion to Research Question 2:
+
+    The One-Way ANOVA test was conducted to determine if Life Expectancy differs significantly by income group.
+
+    1. ANOVA Results: The analysis revealed a statistically significant difference between the groups (p<0.05). This leads us to reject the Null Hypothesis, confirming that a country's wealth classification is a strong predictor of its population's longevity.
+
+    2. Tukey Post-Hoc Analysis: Since the global test was significant, a Tukey HSD post-hoc test was performed to identify exactly where the differences lie. The results show that:
+     - High Income vs. Low Income: There is a substantial gap, with High Income countries living significantly longer (approx. 15-20 years difference).
+     - Middle Income Groups: Significant differences were also observed between Upper-Middle and Lower-Middle income countries, suggesting that even moderate economic improvements correlate with measurable health gains.´
     """)
     return
 
