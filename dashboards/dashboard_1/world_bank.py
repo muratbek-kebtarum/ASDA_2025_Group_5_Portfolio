@@ -12,16 +12,9 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    #### Importing libraries
-    """)
-    return
-
-
 @app.cell
 def _():
+    import marimo as mo
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -32,56 +25,32 @@ def _():
     from statsmodels.formula.api import ols
     from statsmodels.stats.anova import anova_lm
     from statsmodels.stats.multicomp import pairwise_tukeyhsd
-    return np, ols, pairwise_tukeyhsd, pd, plt, sm, sns, stats
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    #### Loading and Merging data
-    """)
-    return
+    return mo, np, ols, pairwise_tukeyhsd, pd, plt, sm, sns, stats
 
 
 @app.cell
 def _(pd):
-    df1=pd.read_csv("../additional_material/datasets/week5/world_bank_development_indicators.csv")
-    df2=pd.read_excel("../additional_material/datasets/week5/income.xlsx")
+    df1=pd.read_csv("../../additional_material/datasets/week5/world_bank_development_indicators.csv")
+    df2=pd.read_excel("../../additional_material/datasets/week5/income.xlsx")
     df = pd.merge(df1, df2, left_on='country', right_on='Economy', how="inner")
     return (df,)
 
 
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    #### Data Inspection
-    """)
+@app.cell
+def _(df):
+    print(df.duplicated().sum())
     return
 
 
 @app.cell
 def _(df):
-    df.head()
+    print(df.isnull().sum())
     return
 
 
 @app.cell
 def _(df):
-    df.sample(8)
-    return
-
-
-@app.cell
-def _(df):
-    # Information about the dataset
-    df.info()
-    return
-
-
-@app.cell
-def _(df):
-    # Dataset Shape
-    print("Dataset Shape:", df.shape)
+    print(df.head())
     return
 
 
@@ -95,32 +64,10 @@ def _(df):
 
 
 @app.cell
-def _(df):
-    # percentage of missing values in each column
-    missing_percentage = df.isnull().mean() * 100
-    print("Percentage of missing values in each column:")
-    print(missing_percentage)
-    return
-
-
-@app.cell
-def _(df):
-    # Checking for missing values
-    df.isnull().sum()
-    return
-
-
-@app.cell
-def _(df):
-    # decribe the dataset
-    df.describe()
-    return
-
-
-@app.cell
-def _(df):
-    # describe the dataset object type
-    df.describe(include=['object'])
+def _(mo):
+    mo.md(r"""
+ 
+    """)
     return
 
 
@@ -138,29 +85,7 @@ def _(df):
 
 @app.cell
 def _(df):
-    # duplicated rows in the dataset
-    df.duplicated().sum()
-    return
-
-
-@app.cell
-def _(df):
-    # number of entries for each income group
-    df['Income group'].value_counts()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    #### Data Cleaning
-    """)
-    return
-
-
-@app.cell
-def _(df):
-    df['Region'].value_counts()
+    print(df['Region'].value_counts())
     return
 
 
@@ -197,7 +122,7 @@ def _(df):
 
 @app.cell
 def _(df):
-    df['country'].unique()
+    print(df['country'].unique())
     return
 
 
@@ -281,215 +206,258 @@ def _(df, np):
 def _(df):
     # rename the cleaned country column to country and drop the old country column as well as region column
     df['country'] = df['country_clean']
-    df_1 = df.drop(columns=['country_clean'])
-    df_1 = df_1.drop(columns=['Region'])
-    df_1['country'].unique()
-    return (df_1,)
-
-
-@app.cell
-def _(df_1):
-    df_1['Income group'] = df_1['Income group'].str.replace(' income', '').str.replace(' ', '_')
+    df.drop(columns=['country_clean'],inplace=True)
+    df.drop(columns=['Region'],inplace=True)
+    print(df['country'].unique())
     return
 
 
 @app.cell
-def _(df_1):
+def _(df):
+    df['Income group'] = (df['Income group'].str.replace(' income', '').str.replace(' ', '_'))
+    return
+
+
+@app.cell
+def _(df):
     # Edit columns names 
-    df_1.columns = [col.strip().lower().replace(' ', '_') for col in df_1.columns]
+    df.columns = [col.strip().lower().replace(' ', '_') for col in df.columns]
     #change % in column names to _percent
-    df_1.columns = [col.replace('%', '_percent') for col in df_1.columns]
-    df_1.columns
+    df.columns = [col.replace('%', '_percent') for col in df.columns]
+    print(df.columns)
     return
 
 
 @app.cell
-def _(df_1):
-    df_1.sample(5)
-    return
-
-
-@app.cell
-def _(df_1):
-    df_1.columns
-    return
-
-
-@app.cell
-def _(df_1, pd):
+def _(df, pd):
     # edit the data types of date column, income_group column and continent column
     # Convert 'date' column to datetime
-    df_1['date'] = pd.to_datetime(df_1['date'])
-    df_1['income_group'] = df_1['income_group'].astype('category')
+    df['date'] = pd.to_datetime(df['date'])
+
     # Convert 'income_group' and 'continent' to categorical
-    df_1['continent'] = df_1['continent'].astype('category')
+    df['income_group'] = df['income_group'].astype('category')
+    df['continent'] = df['continent'].astype('category')
+
     # Check the data types
-    print(df_1.dtypes)
+    print(df.dtypes)
     return
 
 
 @app.cell
-def _(df_1, np):
+def _(df, np):
     #we need to have independent samples for ANOVA test so we should have one entry per country
     # Filter years 2015–2019 
-    df_filtered = df_1[(df_1['date'].dt.year >= 2015) & (df_1['date'].dt.year <= 2019)]
-    numeric_cols = df_filtered.select_dtypes(include=np.number).columns.tolist()
+    df_filtered = df[(df['date'].dt.year >= 2015) & (df['date'].dt.year <= 2019)]
+
     #Separate numeric and non-numeric columns 
+    numeric_col = df_filtered.select_dtypes(include=np.number).columns.tolist()
     non_numeric_cols = df_filtered.select_dtypes(exclude=np.number).columns.tolist()
     non_numeric_cols = [col for col in non_numeric_cols if col != 'country']
 
-    def mode_or_first(series):
     # Function to take mode (most frequent value) we will use it for non numerical columns
+    def mode_or_first(series):
         m = series.mode()
         if not m.empty:
             return m[0]
         else:
-            return series.iloc[0]
-    agg_dict = {col: 'mean' for col in numeric_cols}  # fallback if all missing
-    agg_dict.update({col: mode_or_first for col in non_numeric_cols})
+            return series.iloc[0]  # fallback if all missing
+
     #Group by country and aggregate
     # numeric → mean
-    df_filtered = df_filtered.groupby('country', as_index=False).agg(agg_dict)
+    agg_dict = {col: 'mean' for col in numeric_col}
     # categorical → mode
-    df_filtered.head()
+    agg_dict.update({col: mode_or_first for col in non_numeric_cols})
+
+    df_filtered = df_filtered.groupby('country', as_index=False).agg(agg_dict)
+
+    print(df_filtered.head())
     return (df_filtered,)
 
 
 @app.cell
-def _(df_filtered, pd):
-    # missing values summary
-    missing_counts = df_filtered.isnull().sum()
-    missing_pct = df_filtered.isnull().mean() * 100
+def _(mo):
+    mo.md(r"""
+    ### Missing Values after cleaning
+    """)
+    return
 
-    # create missing report dataframe
-    missing_report = (
-        pd.DataFrame({'missing_count': missing_counts, 'missing_pct': missing_pct})
-        .sort_values('missing_pct', ascending=False)
+
+@app.cell
+def _(mo):
+    min_missing_pct = mo.ui.slider(
+        start=0,
+        stop=100,
+        step=5,
+        value=0,
+        label="Minimum missing percentage"
     )
 
-    print(missing_report)
+    min_missing_pct
+    return (min_missing_pct,)
+
+
+@app.cell
+def _(df_filtered, min_missing_pct, pd):
+    missing_df = pd.DataFrame({
+        "Missing Count": df_filtered.isnull().sum(),
+        "Missing %": df_filtered.isnull().mean() * 100,
+    })
+
+    missing_report = (
+        missing_df[missing_df["Missing %"] >= min_missing_pct.value]
+        .round(2)
+        .sort_values("Missing %", ascending=False)
+    )
+
+    missing_report
     return
 
 
 @app.cell
 def _(df_filtered):
     # columns to drop
-    cols_to_drop = ['electric_power_consumption', 'multidimensional_poverty_headcount_ratio_percent', 'risk_premium_on_lending', 'time_to_get_operation_license', 'central_goverment_debt_percent', 'gini_index', 'real_interest_rate', 'research_and_development_expenditure_percent', 'lending_category', 'human_capital_index', 'expense_percent', 'tax_revenue_percent', 'avg_precipitation', 'date', 'population_density', 'rural_population', 'regulatory_quality_estimate', 'logistic_performance_index', 'other_greenhouse_emisions', 'military_expenditure_percent', 'code', 'statistical_performance_indicators', 'voice_and_accountability_std', 'political_stability_std', 'rule_of_law_std', 'regulatory_quality_std', 'goverment_effectiveness_std', 'control_of_corruption_std', 'economy', 'land_area', 'birth_rate', 'death_rate']
-    df_filtered_1 = df_filtered.drop(columns=cols_to_drop)  #missing value >30%  #99%  #77%  #71%  #70%  #68%  #50  #48%  #45%  #44%  #36%  #34%  #31%  # irrelevant Indicators  #std columns  #redundant columns  # duplicate of country  # have high correlation with life_expectancy_at_birth                
-    return (df_filtered_1,)
+    cols_to_drop = [
+        #missing value >30%
+        'electric_power_consumption',                       #99%
+        'multidimensional_poverty_headcount_ratio_percent', #77%
+        'risk_premium_on_lending',                          #71%
+        'time_to_get_operation_license',                    #70%
+        'central_goverment_debt_percent',                   #68%
+        'gini_index',                                       #50
+        'real_interest_rate',                               #48%
+        'research_and_development_expenditure_percent'  ,   #45%
+        'lending_category',                                 #44%
+        'human_capital_index',                              #36%
+        'expense_percent',                                  #36%
+        'tax_revenue_percent',                              #34%
+        'avg_precipitation',                                #31%  
+
+        # irrelevant Indicators
+        'date',
+        'population_density',
+        'rural_population',
+        'regulatory_quality_estimate',
+        'logistic_performance_index', 
+        'other_greenhouse_emisions', 
+        'military_expenditure_percent', 
+        'code', 
+        'statistical_performance_indicators',
+
+        #std columns
+        'voice_and_accountability_std',
+        'political_stability_std',
+        'rule_of_law_std',
+        'regulatory_quality_std',
+        'goverment_effectiveness_std',
+        'control_of_corruption_std',
+
+        #redundant columns
+        'economy',  # duplicate of country
+        'land_area',
+        'birth_rate',# have high correlation with life_expectancy_at_birth                
+        'death_rate',# have high correlation with life_expectancy_at_birth
+    ]
+    df_filtered.drop(columns=cols_to_drop,inplace=True)
+    return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     mo.md(r"""
-    #### Data Inspection & Visualiztion
+    ### Descriptive statistics
     """)
     return
 
 
 @app.cell
-def _(df_filtered_1):
-    df_filtered_1.head()
+def _(df_filtered, mo):
+    numeric_cols = df_filtered.select_dtypes(include="number").columns.tolist()
+
+    selected_cols = mo.ui.multiselect(
+        options=numeric_cols,
+        value=numeric_cols[:-1],
+        label="Select numeric columns"
+    )
+
+    selected_cols
+    return (selected_cols,)
+
+
+@app.cell
+def _(df_filtered, selected_cols):
+    df_filtered[selected_cols.value].describe().round(2)
     return
 
 
 @app.cell
-def _(df_filtered_1):
-    df_filtered_1.info()
+def _(mo):
+    mo.md(r"""
+    ### Dependent Variables Distribution
+    """)
     return
 
 
 @app.cell
-def _(df_filtered_1):
-    df_filtered_1.describe()
-    return
+def _(mo):
+    group_cols = ["income_group", "continent"]
+
+    selected_group = mo.ui.dropdown(
+        options=group_cols,
+        value="income_group",
+        label="Group countries by"
+    )
+
+    selected_group
+
+    return (selected_group,)
 
 
 @app.cell
-def _(df_filtered_1):
-    df_filtered_1.describe(include=['object', 'category'])
-    return
+def _(df_filtered, selected_group):
+    group_counts = df_filtered[selected_group.value].value_counts()
+    group_counts
+    return (group_counts,)
 
 
 @app.cell
-def _(df_filtered_1):
-    df_filtered_1['income_group'].value_counts()
-    return
+def _(group_counts, plt, selected_group, sns):
+    sns.set_style("whitegrid")
+    palette = sns.color_palette("Set3")
 
+    fig = plt.figure(figsize=(7, 5))
+    sns.barplot(
+        x=group_counts.index,
+        y=group_counts.values,
+        palette=palette
+    )
 
-@app.cell
-def _(df_filtered_1):
-    df_filtered_1['continent'].value_counts()
-    return
-
-
-@app.cell
-def _(df_filtered_1):
-    df_filtered_1.shape
-    return
-
-
-@app.cell
-def _(df_filtered_1, plt, sns):
-    _fig, _axes = plt.subplots(1, 2, figsize=(14, 5))
-    sns.set_style('whitegrid')
-    palette = sns.color_palette('Set3')
-    income_counts = df_filtered_1['income_group'].value_counts()
-    sns.barplot(x=income_counts.index, y=income_counts.values, ax=_axes[0], palette=palette)
-    _axes[0].set_title('Number of Countries by Income Group', fontsize=12)
-    _axes[0].set_xlabel('Income Group')
-    _axes[0].set_ylabel('Number of Countries')
-    continent_counts = df_filtered_1['continent'].value_counts()
-    sns.barplot(x=continent_counts.index, y=continent_counts.values, ax=_axes[1], palette=palette)
-    _axes[1].set_title('Number of Countries by Continent', fontsize=12)
-    _axes[1].set_xlabel('Continent')
-    _axes[1].set_ylabel('Number of Countries')
-    _axes[1].tick_params(axis='x', rotation=45)
+    plt.title(f"Number of Countries by {selected_group.value.replace('_', ' ').title()}")
+    plt.xlabel(selected_group.value.replace("_", " ").title())
+    plt.ylabel("Number of Countries")
+    plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
-    plt.show()
+
+    fig
+
     return
 
 
 @app.cell
-def _():
-    #continue some visualizations
-    return
-
-
-@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    #### Anova
-
-    check assumptions
-    - Independent samples
-    - Equal sample sizes of groups → Type 3 Anova if not equal
-    - Equal variances of groups
-    - Normal distribution of the dependent variable → log-transform if needed
-    - Normal distribution of residuals
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    ##### Environmental sustainability
-    Question:
-    - Does CO2 emission per capita differ across income groups?
-
+    ##Does CO2 emission per capita differ across income groups?
     Variables:
-    - DV (dependent variable) → co2_emissions
 
-    - IV (independent variable / factor) → income_group
+    DV (dependent variable) → co2_emissions
+
+    IV (independent variable / factor) → income_group
     """)
     return
 
 
 @app.cell
-def _(df_filtered_1):
-    df_co2 = df_filtered_1[['country', 'income_group', 'co2_emisions', 'population']].copy()
-    df_co2.head()
+def _(df_filtered):
+    df_co2 = df_filtered[['country', 'income_group', 'co2_emisions','population']].copy()
     return (df_co2,)
 
 
@@ -507,91 +475,161 @@ def _(df_co2):
 
 @app.cell
 def _(df_co2):
-    #drop the 2 missing values
-    df_co2_1 = df_co2.dropna(subset=['co2_emisions'])
-    print(df_co2_1['co2_emisions'].isna().sum())
-    return (df_co2_1,)
-
-
-@app.cell
-def _(df_co2_1):
-    ##### Environmental sustainability
-    # 1-We have independent samples as each country's data is independent of others.
-    # 2- Sample sizes of groups are not equal, so we will use Type 3 Anova.
-    df_co2_1['income_group'].value_counts()
+    df_co2.dropna(subset=['co2_emisions'],inplace=True)
+    print(df_co2['co2_emisions'].isna().sum())
     return
 
 
 @app.cell
-def _(df_co2_1, np):
-    df_co2_1['co2_emisions_log'] = np.log(df_co2_1['co2_emisions'] + 1)
+def _(df_co2):
+    print(df_co2['income_group'].value_counts())
     return
 
 
 @app.cell
-def _(df_co2_1, plt, sns, stats):
-    _fig, _axes = plt.subplots(1, 2, figsize=(14, 5))
-    sns.histplot(df_co2_1['co2_emisions_log'], kde=True, bins=30, color='skyblue', ax=_axes[0])
-    _axes[0].set_title('Histogram of CO2 emisions')
-    _axes[0].set_xlabel('CO2 emisions(log)')
-    _axes[0].set_ylabel('Frequency')
-    _osm, _osr = stats.probplot(df_co2_1['co2_emisions_log'])[0]
-    _slope, _intercept, _r_value, _p_value, _std_err = stats.linregress(_osm, _osr)
-    _axes[1].scatter(_osm, _osr, color='blue')
-    _axes[1].plot(_osm, _intercept + _slope * _osm, color='red', lw=2)
-    _axes[1].set_title('Q-Q Plot of CO2 emisions(log)')
-    _axes[1].set_xlabel('Theoretical Quantiles')
-    _axes[1].set_ylabel('Ordered Values')
+def _(df_co2, np):
+    df_co2['co2_emisions_log']=np.log(df_co2['co2_emisions']+1)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    ### Normality of the Dependent Variable
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+
+    plot_options = ["Histogram", "Q-Q Plot"]
+
+    selected_plot = mo.ui.dropdown(
+        options=plot_options,
+        value="Histogram",
+        label="Select the plot to display"
+    )
+
+    selected_plot
+    return (selected_plot,)
+
+
+@app.cell
+def _(df_co2, plt, selected_plot, sns, stats):
+    sns.set_style("whitegrid")
+
+    # Start figure
+    fig2 = plt.figure(figsize=(7, 5))
+
+    if selected_plot.value == "Histogram":
+        sns.histplot(df_co2['co2_emisions_log'], kde=True, bins=30, color='skyblue')
+        plt.title('Distribution of CO2 Emissions (log)')
+        plt.xlabel('CO₂ emissions (log)')
+        plt.ylabel('Frequency')
+
+    elif selected_plot.value == "Q-Q Plot":
+        osm, osr = stats.probplot(df_co2['co2_emisions_log'])[0]
+        slope, intercept, *_ = stats.linregress(osm, osr)
+        plt.scatter(osm, osr, color='blue')
+        plt.plot(osm, intercept + slope*osm, color='red', lw=2)
+        plt.title('Q-Q Plot of CO₂ Emissions (log)')
+        plt.xlabel('Theoretical Quantiles')
+        plt.ylabel('Ordered Values')
+
     plt.tight_layout()
-    plt.show()
+    fig2  # last line so Marimo renders it
     return
 
 
 @app.cell
-def _(df_co2_1, np, stats):
-    _stat, _p = stats.shapiro(np.log(df_co2_1['co2_emisions']))
-    print(f'Statistics={_stat:.3f}, p={_p:.3f}')
-    if _p > 0.05:
-        print('Residuals look Gaussian (fail to reject H0)')
-    else:
-        print('Residuals do NOT look Gaussian (reject H0)')
+def _(mo):
+    mo.md(r"""
+    ### Variance of the Dependent Variable
+    """)
     return
 
 
 @app.cell
-def _(df_co2_1, plt, sns):
-    # 4-Equal variances of groups
-    # Boxplot to visualize variance per income group
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='income_group', y='co2_emisions_log', data=df_co2_1, order=['Low', 'Lower_middle', 'Upper_middle', 'High'], palette='Set2')
-    plt.title('CO2 emissions(Log) by Income Group')
+def _(mo):
+    # List of income groups
+    income_groups = ['Low', 'Lower_middle', 'Upper_middle', 'High']
+
+    # Let the user select which groups to display
+    selected_groups = mo.ui.multiselect(
+        options=income_groups,
+        value=income_groups,  # default: show all
+        label="Select income groups to display"
+    )
+
+    selected_groups
+
+
+    return income_groups, selected_groups
+
+
+@app.cell
+def _(df_co2, income_groups, plt, selected_groups, sns):
+    sns.set_style("whitegrid")
+    fig3 = plt.figure(figsize=(10,6))
+
+
+    df_plot = df_co2[df_co2['income_group'].isin(selected_groups.value)]
+
+    ordered_groups = [g for g in income_groups if g in selected_groups.value]
+
+    sns.boxplot(
+        x='income_group',
+        y='co2_emisions_log',
+        data=df_plot,
+        order=ordered_groups,  
+        palette='Set2'
+    )
+
+    plt.title('CO₂ Emissions (Log) by Income Group')
     plt.xlabel('Income Group')
-    plt.ylabel('CO2 emisions(Log)')
-    plt.show()
+    plt.ylabel('CO₂ Emissions (Log)')
+    plt.tight_layout()
+
+    fig3  
+
     return
 
 
 @app.cell
-def _(df_co2_1, ols, sm):
+def _(mo):
+    mo.md(r"""
+    ### Anova
+    """)
+    return
+
+
+@app.cell
+def _(df_co2, ols, sm):
     # Fit ANOVA model
-    model = ols('co2_emisions_log ~ C(income_group)', data=df_co2_1).fit()
+    model = ols('co2_emisions_log ~ C(income_group)', data=df_co2).fit()
     anova_table = sm.stats.anova_lm(model, typ=3)
-    print('ANOVA Table:')
+    print("ANOVA Table:")
     print(anova_table)
     return anova_table, model
 
 
 @app.cell
 def _(model, plt, sns):
-    residuals = model.resid
+    sns.set_style("whitegrid")
+    fig4 = plt.figure(figsize=(8, 5))
 
-    plt.figure(figsize=(8,5))
+    residuals = model.resid  # your residuals
+
     sns.histplot(residuals, bins=30, kde=True, color='skyblue')
     plt.title('Histogram of Residuals')
     plt.xlabel('Residuals')
     plt.ylabel('Frequency')
-    plt.show()
-    return (residuals,)
+    plt.tight_layout()
+
+    fig4  # last line → renders in Marimo View mode
+
+    return
 
 
 @app.cell
@@ -611,235 +649,60 @@ def _(anova_table):
 
 
 @app.cell
-def _(df_co2_1, pairwise_tukeyhsd):
-    # Tukey HSD post-hoc test
-    tukey = pairwise_tukeyhsd(endog=df_co2_1['co2_emisions_log'], groups=df_co2_1['income_group'], alpha=0.05)
-    print(tukey)  # your dependent variable  # your factor
+def _(mo):
+    income_groups_order = ['Low', 'Lower_middle', 'Upper_middle', 'High']
+
+    selected_groupss = mo.ui.multiselect(
+        options=income_groups_order,
+        value=income_groups_order,
+        label="Select income groups to include in Tukey HSD test"
+    )
+
+    selected_groupss
+    return (selected_groupss,)
+
+
+@app.cell
+def _(df_co2, pairwise_tukeyhsd, pd, selected_groupss):
+    # Filter dataframe based on selected groups
+    df_plot2 = df_co2[df_co2['income_group'].isin(selected_groupss.value)]
+
+    # Tukey HSD test
+    tukey = pairwise_tukeyhsd(
+        endog=df_plot2['co2_emisions_log'],
+        groups=df_plot2['income_group'],
+        alpha=0.05
+    )
+
+    def color_significant(val):
+        return 'background-color: yellow' if val=='True' else ''
+
+
+    # Convert results to dataframe for clean display
+    tukey_df = pd.DataFrame(data=tukey.summary().data[1:], columns=tukey.summary().data[0])
+    tukey_df
+
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     mo.md(r"""
+    ### Conclusion
     Income group has a very strong effect on CO₂ emissions,and here is the results
-    - High-income countries emit significantly more CO₂ per capita than Low and Lower-Middle income countries.
-    - Upper-Middle income countries emit significantly more than Low-income countries.
-    - Income groups in the middle (Low ↔ Lower-Middle ↔ Upper-Middle) do NOT differ much.
-    - Upper-Middle countries are surprisingly close to High-income countries (no significant difference).
-    """)
-    return
 
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    ##### Economic performance
-    """)
-    return
-
-
-@app.cell
-def _(df_filtered_1):
-    df_gdp = df_filtered_1[['country', 'income_group', 'gdp_current_us']].copy()
-    print(df_gdp['gdp_current_us'].isna().sum())
-    #Impute missing values by the mean of their income group
-    df_gdp['gdp_current_us'] = df_gdp.groupby('income_group')['gdp_current_us'].transform(lambda x: x.fillna(x.mean()))
-    #Verify no missing values remain
-    print(df_gdp['gdp_current_us'].isna().sum())
-    return (df_gdp,)
-
-
-@app.cell
-def _(df_gdp):
-    #drop the 2 missing values
-    df_gdp_1 = df_gdp.dropna(subset=['gdp_current_us'])
-    print(df_gdp_1['gdp_current_us'].isna().sum())
-    return (df_gdp_1,)
-
-
-@app.cell
-def _(df_gdp_1, np):
-    df_gdp_1['gdp_current_us_log'] = np.log(df_gdp_1['gdp_current_us'] + 1)
-    return
-
-
-@app.cell
-def _(df_gdp_1, plt, sns, stats):
-    _fig, _axes = plt.subplots(1, 2, figsize=(14, 5))
-    sns.histplot(df_gdp_1['gdp_current_us_log'], kde=True, bins=30, color='skyblue', ax=_axes[0])
-    _axes[0].set_title('Histogram of GDP')
-    _axes[0].set_xlabel('GDP(log)')
-    _axes[0].set_ylabel('Frequency')
-    _osm, _osr = stats.probplot(df_gdp_1['gdp_current_us_log'])[0]
-    _slope, _intercept, _r_value, _p_value, _std_err = stats.linregress(_osm, _osr)
-    _axes[1].scatter(_osm, _osr, color='blue')
-    _axes[1].plot(_osm, _intercept + _slope * _osm, color='red', lw=2)
-    _axes[1].set_title('Q-Q Plot of GDP(log)')
-    _axes[1].set_xlabel('Theoretical Quantiles')
-    _axes[1].set_ylabel('Ordered Values')
-    plt.tight_layout()
-    plt.show()
-    return
-
-
-@app.cell
-def _(df_gdp_1, stats):
-    _stat, _p = stats.shapiro(df_gdp_1['gdp_current_us_log'])
-    print(f'Statistics={_stat:.3f}, p={_p:.3f}')
-    if _p > 0.05:
-        print('Residuals look Gaussian (fail to reject H0)')
-    else:
-        print('Residuals do NOT look Gaussian (reject H0)')
-    return
-
-
-@app.cell
-def _(df_gdp_1, plt, sns):
-    # 4-Equal variances of groups
-    # Boxplot to visualize variance per income group
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='income_group', y='gdp_current_us_log', data=df_gdp_1, order=['Low', 'Lower_middle', 'Upper_middle', 'High'], palette='Set2')
-    plt.title('GDP(Log) by Income Group')
-    plt.xlabel('Income Group')
-    plt.ylabel('GDP(Log)')
-    plt.show()
-    return
-
-
-@app.cell
-def _(df_gdp_1, stats):
-    groups_data = [df_gdp_1[df_gdp_1['income_group'] == g]['gdp_current_us_log'].dropna() for g in ['Low', 'Lower_middle', 'Upper_middle', 'High']]
-    _stat, _p = stats.levene(*groups_data)
-    print(f"Levene's Test: Statistic = {_stat:.3f}, p-value = {_p:.3f}")
-    if _p > 0.05:
-        print('Variances are equal across groups (fail to reject H0).')
-    else:
-        print('Variances are NOT equal across groups (reject H0).')
-    return
-
-
-@app.cell
-def _(df_gdp_1):
-    #non equal variances anova
-    import pingouin as pg
-    welch_result = pg.welch_anova(dv='gdp_current_us_log', between='income_group', data=df_gdp_1)
-    # Welch ANOVA using pingouin
-    print(welch_result)
-    return (pg,)
-
-
-@app.cell
-def _(df_gdp_1, pg):
-    posthoc = pg.pairwise_gameshowell(dv='gdp_current_us_log', between='income_group', data=df_gdp_1)
-    posthoc
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    - High-income countries have significantly higher GDP compared to Low-, Lower-Middle-, and Upper-Middle income countries.
-    - Differences among the Low-, Lower-Middle-, and Upper-Middle income groups are not statistically significant, indicating that GDP levels within these middle and lower groups are relatively similar.
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    ##### Human well-being and health
-    """)
-    return
-
-
-@app.cell
-def _(df_filtered_1):
-    df_filtered_1.to_csv('Human-well-being-health.csv', index=False)
-    return
-
-
-@app.cell
-def _(
-    df_filtered_1,
-    levene,
-    np,
-    ols,
-    pairwise_tukeyhsd,
-    plt,
-    residuals,
-    sm,
-    sns,
-):
-    group_order = ['Low', 'Lower_middle', 'Upper_middle', 'High']
-
-    def analyze_indicator(data, col_name, title, apply_log=False):
-        """
-        Runs the full analysis pipeline: Boxplot -> Assumptions -> ANOVA -> Tukey
-        """
-        print(f"\n{'=' * 60}")
-        print(f'ANALYSIS FOR: {title}')
-        print(f"{'=' * 60}")
-        work_df = data[['income_group', col_name]].dropna()
-        if apply_log:
-            work_df[col_name] = np.log(work_df[col_name])
-            print('Note: Data has been log-transformed for analysis.')
-        _fig, _axes = plt.subplots(1, 3, figsize=(18, 5))
-        sns.boxplot(x='income_group', y=col_name, data=work_df, order=group_order, ax=_axes[0], palette='Set2')
-        _axes[0].set_title(f'Boxplot: {title}')
-        _axes[0].set_xlabel('Income Group')
-        sns.histplot(residuals, kde=True, ax=_axes[1], color='skyblue')
-        _axes[1].set_title('Histogram of Residuals')
-        _axes[1].set_xlabel('Residuals')
-        sm.qqplot(residuals, line='45', fit=True, ax=_axes[2])
-        _axes[2].set_title('Q-Q Plot of Residuals')
-        plt.tight_layout()
-        plt.show()
-        print('--- Assumptions ---')
-        groups = [work_df[work_df['income_group'] == g][col_name] for g in group_order if g in work_df['income_group'].unique()]
-        _stat, p_levene = levene(*groups)
-        print(f"Levene's Test (Equal Variance): p-value = {p_levene:.4f}")
-        if p_levene < 0.05:
-            print('  -> Warning: Variances are not equal (Assumption violated).')
-        else:
-            print('  -> Variances are equal.')
-        print('\n--- Type 3 ANOVA Results ---')
-        formula = f'Q("{col_name}") ~ C(income_group)'
-        model = ols(formula, data=work_df).fit()
-        anova_table = sm.stats.anova_lm(model, typ=3)
-        print(anova_table)
-        p_val = anova_table.loc['C(income_group)', 'PR(>F)']
-        if p_val < 0.05:
-            print('\n--- Significant difference found! Running Tukey HSD ---')
-            tukey = pairwise_tukeyhsd(endog=work_df[col_name], groups=work_df['income_group'], alpha=0.05)
-            print(tukey)
-        else:
-            print('\nNo significant difference found between groups.')
-    analyze_indicator(df_filtered_1, 'life_expectancy_at_birth', 'Life Expectancy')
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    ## Human Well-being: Life Expectancy at Birth
-
-    Our analysis reveals a striking, stepwise stratification in human longevity based on national income. An Analysis of Variance (ANOVA) confirmed highly significant differences between groups ($F(3, 183) = 106.9, p < 0.001$).
-
-    Post-hoc analysis (Tukey HSD) demonstrates that these disparities exist at every level of development; every income group is statistically distinct from the others. The disparity is most profound at the extremes: **individuals in High-Income countries live, on average, 17.5 years longer than those in Low-Income countries.**
-
-    Notably, the "development ladder" yields consistent gains: moving from Low to Lower-Middle income is associated with a **5.3-year increase** in life expectancy, suggesting that even early-stage economic development yields major health dividends.
-
-    > **Methodological Note:** Levene’s test indicated unequal variances between groups ($p=0.02$), reflecting greater variability in outcomes within lower-income nations compared to the consistently high outcomes in wealthy nations.
+    High-income countries emit significantly more CO₂ per capita than Low and Lower-Middle income countries.
+    Upper-Middle income countries emit significantly more than Low-income countries.
+    Income groups in the middle (Low ↔ Lower-Middle ↔ Upper-Middle) do NOT differ much.
+    Upper-Middle countries are surprisingly close to High-income countries (no significant difference).
     """)
     return
 
 
 @app.cell
 def _():
-    import marimo as mo
-    return (mo,)
+    return
 
 
 if __name__ == "__main__":
     app.run()
-
