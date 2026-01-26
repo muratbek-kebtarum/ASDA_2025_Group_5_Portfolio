@@ -5,6 +5,10 @@
 # ]
 # ///
 import marimo
+import pandas
+import altair
+import statsmodels.api
+import scipy
 
 __generated_with = "0.19.4"
 app = marimo.App()
