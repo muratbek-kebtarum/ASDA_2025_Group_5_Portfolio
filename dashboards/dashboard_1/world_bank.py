@@ -17,7 +17,7 @@
 import marimo
 
 __generated_with = "0.19.4"
-app = marimo.App()
+app = marimo.App(width="full")
 
 
 @app.cell(hide_code=True)
@@ -577,7 +577,6 @@ def _(mo):
     )
 
     selected_groups
-
     return income_groups, selected_groups
 
 
@@ -714,7 +713,6 @@ def _(pd):
     import altair as alt
 
     life_df = pd.read_csv("https://raw.githubusercontent.com/muratbek-kebtarum/ASDA_2025_Group_5_Portfolio/refs/heads/main/dashboards/dashboard_1/Human-well-being-health.csv")
-
     return alt, life_df
 
 
@@ -754,14 +752,15 @@ def _(alt, lean_df):
     scatter2 = alt.Chart(lean_df).mark_circle(size=60).encode(
         x=alt.X('government_health_expenditure_percent', title='Health Expenditure (%)'),
         y=alt.Y('life_expectancy_at_birth', scale=alt.Scale(domain=[50, 90]), title='Life Expectancy'),
-    
+
         # The Magic Trick:
         # If a point is selected, color it by continent.
         # If NOT selected, turn it gray.
         color=alt.condition(click_selection, 'continent', alt.value('lightgray')),
         tooltip=['country', 'life_expectancy_at_birth']
     ).properties(
-        width=400,
+        width=800, 
+        height=400,
         title="Health vs Life Expectancy"
     )
 
@@ -773,7 +772,8 @@ def _(alt, lean_df):
     ).add_selection(
         click_selection # <--- We attach the click tool to this chart
     ).properties(
-        width=200,
+        width=250,
+        height=400,
         title="Click a bar to filter"
     )
 
@@ -798,7 +798,8 @@ def _(alt, lean_df):
     ).add_selection(
         brush  # <--- Attach the brush here!
     ).properties(
-        width=400,
+        width=800, 
+        height=400,
         title="Drag a box on this chart!"
     )
 
@@ -810,7 +811,8 @@ def _(alt, lean_df):
     ).transform_filter(
         brush # <--- This filters the bars based on your box!
     ).properties(
-        width=300,
+        width=250,
+        height=400,
         title="2. See counts update here"
     )
 
@@ -834,7 +836,7 @@ def _(alt, lean_df):
     map_chart = alt.Chart(source).mark_geoshape().encode(
         # Color: Use the Life Expectancy column
         color=alt.Color('life_expectancy_at_birth:Q', title='Life Expectancy', scale=alt.Scale(scheme='viridis')),
-    
+
         # Tooltips: Show Country Name and Value
         tooltip=[
             alt.Tooltip('properties.name:N', title='Country'),
@@ -843,14 +845,14 @@ def _(alt, lean_df):
     ).transform_lookup(
         # Match 'properties.name' in the map file...
         lookup='properties.name',
-    
+
         # ...with 'country' in your dataframe
         from_=alt.LookupData(lean_df, key='country', fields=['life_expectancy_at_birth'])
     ).project(
         type='naturalEarth1'
     ).properties(
-        width=600,
-        height=400,
+    width='container', 
+        height=600,
         title="Global Life Expectancy"
     )
 
@@ -930,7 +932,7 @@ def _(
 
     # Combine them
     combined_chart = (boxplot + points).properties(
-        width=600, 
+        width='container', 
         height=400, 
         title=f"Distribution of {chart_title}"
     )
@@ -948,10 +950,10 @@ def _(
 
     if p_val < 0.05:
         result_text = f"### Significant Difference (p = {p_val:.2e})"
-    
+
         # Run Tukey HSD
         tukey_ = pairwise_tukeyhsd(endog=work_df[col_name], groups=work_df['income_group'], alpha=0.05)
-    
+
         # Convert to DataFrame for nice display
         # We extract the data directly from the Tukey object
         tukey_data = pd.DataFrame(
@@ -960,7 +962,7 @@ def _(
         )
         # Filter for significant rows only
         sig_diffs = tukey_data[tukey_data['reject'] == True]
-    
+
         tukey_display = mo.vstack([
             mo.md("**Tukey Test Results (Significant Pairs Only):**"),
             mo.ui.table(sig_diffs, selection=None)
