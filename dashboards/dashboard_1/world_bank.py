@@ -7,6 +7,9 @@
 #     "pandas",
 #     "statsmodels",
 #     "scipy",
+#     "seaborn",       
+#     "matplotlib",  
+#     "numpy",
 # ]
 # ///
 import marimo
@@ -14,6 +17,8 @@ import pandas
 import altair
 import statsmodels.api
 import scipy
+import seaborn      
+import matplotlib
 
 __generated_with = "0.19.4"
 app = marimo.App()
