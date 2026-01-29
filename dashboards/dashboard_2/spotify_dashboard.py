@@ -1,10 +1,10 @@
 import marimo
 
 __generated_with = "0.19.6"
-app = marimo.App(width="medium")
+app = marimo.App(width="columns")
 
 
-@app.cell
+@app.cell(column=0)
 def _():
     import marimo as mo
     import pandas as pd
@@ -48,6 +48,42 @@ def _(df, np):
 
 
 @app.cell
+def _(get_spotify_player):
+    get_spotify_player("1n7JnwviZ7zf0LR1tcGFq7")
+    return
+
+
+@app.cell
+def _(mo):
+    def get_spotify_player(track_id):
+        if not track_id:
+            return mo.md("_Select a song to play_")
+    
+        # Spotify Embed URL structure
+        embed_url = f"https://open.spotify.com/embed/track/{track_id}?utm_source=generator"
+    
+        return mo.Html(
+            f"""
+            <iframe 
+                src="{embed_url}" 
+                width="100%" 
+                height="152" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+            """
+        )
+    return (get_spotify_player,)
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell(column=1)
 def _():
     return
 
