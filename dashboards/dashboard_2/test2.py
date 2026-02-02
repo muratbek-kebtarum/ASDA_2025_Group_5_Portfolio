@@ -140,10 +140,23 @@ def _(DATA_PATH, NUMERIC_COLUMNS, REQUIRED_COLUMNS, mo, pd, re):
 
 
 @app.cell
-def _(TOP_ARTISTS_LIMIT, df_clean, mo):
+def _(mo):
+    # %% [Cell 3a: Reset Button Definition]
+    # We define this first so the next cell can react to it
+    reset_button = mo.ui.button(
+        label="🔄 Reset Filters",
+        kind="warn"
+    )
+    return (reset_button,)
 
-    # %% [Cell 3: Sidebar UI Controls - CRITICAL FOR REACTIVITY]
-    # These MUST be top-level variables so other cells can reference them
+
+@app.cell
+def _(TOP_ARTISTS_LIMIT, df_clean, mo, reset_button):
+    # %% [Cell 3b: Sidebar UI Controls]
+    # This cell listens to 'reset_button' changes
+
+    # FIX: We added "or 0" to handle the case when the button hasn't been clicked yet.
+    _reset_marker = "\u200b" * int(reset_button.value or 0)
 
     # Get data ranges for sliders
     _energy_min = float(df_clean["energy"].min()) if "energy" in df_clean.columns else 0.0
@@ -155,11 +168,12 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
 
     _top_artists = df_clean["artist"].value_counts().head(TOP_ARTISTS_LIMIT).index.tolist()
 
-    # Define UI controls as global variables
+    # Define UI controls
+    # We use the marker in the label to force a reset when the button is clicked
     artist_select = mo.ui.multiselect(
         options=_top_artists,
         value=_top_artists[:10],
-        label="🎤 Select Artists",
+        label=f"🎤 Select Artists{_reset_marker}",
         full_width=True
     )
 
@@ -168,7 +182,7 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
         stop=_energy_max,
         step=0.01,
         value=(_energy_min, _energy_max),
-        label="⚡ Energy Range"
+        label=f"⚡ Energy Range{_reset_marker}"
     )
 
     valence_slider = mo.ui.range_slider(
@@ -176,7 +190,7 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
         stop=_valence_max,
         step=0.01,
         value=(_valence_min, _valence_max),
-        label="😊 Valence (Mood)"
+        label=f"😊 Valence (Mood){_reset_marker}"
     )
 
     tempo_slider = mo.ui.range_slider(
@@ -184,40 +198,35 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
         stop=_tempo_max,
         step=1.0,
         value=(_tempo_min, _tempo_max),
-        label="🥁 Tempo (BPM)"
+        label=f"🥁 Tempo (BPM){_reset_marker}"
     )
 
     danceability_dropdown = mo.ui.dropdown(
         options=["All", "High (>0.6)", "Medium (0.4-0.6)", "Low (<0.4)"],
         value="All",
-        label="💃 Danceability"
+        label=f"💃 Danceability{_reset_marker}"
     )
 
     instrumental_toggle = mo.ui.switch(
         value=False,
-        label="🎺 Instrumental Only"
+        label=f"🎺 Instrumental Only{_reset_marker}"
     )
 
     live_toggle = mo.ui.switch(
         value=False,
-        label="🎵 Live Recordings"
+        label=f"🎵 Live Recordings{_reset_marker}"
     )
 
     sort_dropdown = mo.ui.dropdown(
         options=["Energy", "Valence", "Tempo", "Duration", "Popularity"],
         value="Energy",
-        label="📊 Sort By"
+        label=f"📊 Sort By{_reset_marker}"
     )
 
     search_box = mo.ui.text(
         value="",
-        label="🔍 Search Songs/Artists",
+        label=f"🔍 Search Songs/Artists{_reset_marker}",
         full_width=True
-    )
-
-    reset_button = mo.ui.button(
-        label="🔄 Reset Filters",
-        kind="warn"
     )
 
     # Create sidebar layout
@@ -238,7 +247,7 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
         mo.md("---"),
         sort_dropdown,
         mo.md("---"),
-        reset_button
+        reset_button 
     ])
     return (
         artist_select,
@@ -246,42 +255,12 @@ def _(TOP_ARTISTS_LIMIT, df_clean, mo):
         energy_slider,
         instrumental_toggle,
         live_toggle,
-        reset_button,
         search_box,
         sidebar,
         sort_dropdown,
         tempo_slider,
         valence_slider,
     )
-
-
-@app.cell
-def _(
-    artist_select,
-    danceability_dropdown,
-    energy_slider,
-    instrumental_toggle,
-    live_toggle,
-    reset_button,
-    search_box,
-    tempo_slider,
-    valence_slider,
-):
-
-
-    # %% [Cell 4: Reset Logic]
-    # Handle reset button press
-    if reset_button.value:
-        artist_select.value = _top_artists[:10]
-        energy_slider.value = (_energy_min, _energy_max)
-        valence_slider.value = (_valence_min, _valence_max)
-        tempo_slider.value = (_tempo_min, _tempo_max)
-        danceability_dropdown.value = "All"
-        instrumental_toggle.value = False
-        live_toggle.value = False
-        search_box.value = ""
-
-    return
 
 
 @app.cell
@@ -383,7 +362,6 @@ def _(
     ]
 
     filtered_df = sort_dataframe(filtered_df, sort_dropdown.value)
-
     return (filtered_df,)
 
 
@@ -528,7 +506,6 @@ def _(COLOR_SCHEMES, DEFAULT_BINS, alt, filtered_df, pd):
     energy_histogram = create_histogram(filtered_df, "energy")
     correlation_heatmap = create_correlation_heatmap(filtered_df)
     artist_chart = create_artist_bar_chart(filtered_df)
-
     return (
         artist_chart,
         correlation_heatmap,
@@ -583,7 +560,6 @@ def _(MAX_EMBED_PLAYERS, filtered_df, mo, pd):
 
     playlist_table = create_playlist_table(filtered_df)
     embed_players = create_embed_players(filtered_df)
-
     return embed_players, playlist_table
 
 
