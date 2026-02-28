@@ -10,29 +10,33 @@
 ## 1. Dataset Overview
 | Item                          | Description |
 | :---                          | :--- |
-| Dataset name                  |  |
-| Time period                   |  |
-| Sampling frequency            |  |
-| Number of rows                |  |
-| Number of columns             |  |
-| Format file (.csv, .txt, etc) |  |
-| Creator of the dataset        |  |
-| Source (name)                 |  |
-| Source (link)                 |  |
+| Dataset name                  |apartments_for_rent_classified_10K |
+| Time period                   | December 2019 (Point-in-time snapshot based on the Unix timestamps in the time column) |
+| Sampling frequency            |  Cross-sectional snapshot (Data was scraped as a one-time static collection, not updated daily/weekly)|
+| Number of rows                |  10,000 listings|
+| Number of columns             | 22 original variables |
+| Format file (.csv, .txt, etc) | .csv (Comma-Separated Values, though technically formatted with a semicolon ; delimiter and cp1252/latin1 encoding) |
+| Creator of the dataset        | Originally scraped from public rental platforms (e.g., RentLingo, Listanza), uploaded to this repository by user tarummurat. |
+| Source (name)                 |  Hugging Face Datasets|
+| Source (link)                 |  https://www.google.com/search?q=https://huggingface.co/datasets/tarummurat/apartments_for_rent_classified_10K|
 
 
 ## 2. Dataset Structure
-| Feature/variable | Data type | Description | Number of unique values | Example values |
-| :---             | :---      | :---        | :---                    | :---           |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-|                  |           |             |                         |                |
-
+| Feature/variable | Data type      | Description | Number of unique values | Example values |
+| :---             | :---           | :---        | :---                    | :---           |
+|    price         |Numeric (Float) |The monthly rental cost in USD (Target Variable)|1,600|1200, 1500, 2150|
+|square_feet       |Numeric (Float) |Total living area of the apartment in square feet|18,00|750, 1000, 1250|
+|  bathrooms       |Numeric (Float) |Number of bathrooms available in the unit|15|1.0, 1.5, 2.0|
+| bedrooms         |Numeric (Float) |Number of sleeping rooms available in the unit|10|1.0, 2.0, 3.0|
+|cityname          |Text (String)   |The city where the apartment is located|15,00|Austin, Seattle, Dallas|
+|State             |Text (String)   |The US State abbreviation|51|TX, CA, WA|
+|latitude          |Numeric (Float)|Geographic latitude coordinate for mapping|8,000|30.2672, 38.9057|
+|longitude         |Numeric (Float)|Geographic longitude coordinate for mapping|8,000|-97.7431, -76.9861|
+|has_photo         |Text (String)|Indicates the type/presence of visual marketing media|3|Thumbnail, Yes, No|
+|pets_allowed      |Text (String)|The landlord's policy regarding animals|3|Cats,Dogs, Dogs, None|
+|amenities         |Text (String)|Comma-separated list of building/unit features|3,200|AC, Gym, Pool, Parking|
+|time              |Numeric (Int)|Listing creation timestamp (Unix format).|9,500|1577359415|
+|body              |Text (String)|Unstructured text description provided by the lister.|9,900|"Beautiful 2 bed 1 bath..."|
 
 ## 3. Data cleaning
 | Issue                      | Names of columns affected | Description of the issue | Action taken |
