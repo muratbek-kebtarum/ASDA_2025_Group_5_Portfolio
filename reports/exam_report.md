@@ -45,8 +45,8 @@
 | Wrong data types           |time|The time column is in Unix timestamp format (integer) rather than a readable DateTime format|Left as int64 since the data is a static cross-sectional snapshot and no time-series forecasting was performed|
 | Time gaps                  |time|The dataset is a snapshot (predominantly from December 2019) rather than a continuous time series|No action needed. Acknowledged as a single point-in-time dataset|
 | Duplicates                 |All columns|Checked the dataset for completely identical/duplicated rows|Evaluated using df.duplicated().sum(). The result was 0, meaning no duplicates existed, so no rows were removed|
-| Inconsistent categories    |price_type, has_photo, category|price_type: Non-monthly values.has_photo: Redundant 'Thumbnail' category.category: Outlier property types.|Converted to monthly, dropped column.Merged into 'Yes'.Dropped rows and column.|
-| Other (Missing values & Outliers)|bathrooms, bedrooms, pets_allowed|Small amount of NaN values in structural columns, physically impossible values (0 bathrooms), and gaps in pet policies.|Dropped rows with missing bathrooms/bedrooms. Dropped rows where bathrooms == 0. Filled missing pets_allowed with "Not specified"|
+| Inconsistent categories    |price_type, has_photo, category|price_type: Non-monthly values,has_photo: Redundant 'Thumbnail' category,category: Outlier property types.|Converted to monthly, dropped column.Merged into 'Yes',Dropped rows and column.|
+| Other (Missing values & Outliers)|bathrooms, bedrooms, pets_allowed|Small amount of NaN values in structural columns, physically impossible values (0 bathrooms), and gaps in pet policies.|Dropped rows with missing bathrooms/bedrooms. Dropped rows where bathrooms = 0. Filled missing pets_allowed with "Not specified"|
 |Other (Single-Value Dominance)|currency, source, fee, is_studio|fee, is_studio	Columns contained >90% identical values (e.g., currency was 100% USD, fee was 100% No), providing no mathematical variance for analysis|Dropped these columns entirely from the dataset to reduce noise and dimensionality|
 
 ## 4. Descriptive statistics – numeric
