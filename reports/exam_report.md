@@ -45,7 +45,11 @@
 | Wrong data types           |time|The time column is in Unix timestamp format (integer) rather than a readable DateTime format|Left as int64 since the data is a static cross-sectional snapshot and no time-series forecasting was performed|
 | Time gaps                  |time|The dataset is a snapshot (predominantly from December 2019) rather than a continuous time series|No action needed. Acknowledged as a single point-in-time dataset|
 | Duplicates                 |All columns|Checked the dataset for completely identical/duplicated rows|Evaluated using df.duplicated().sum(). The result was 0, meaning no duplicates existed, so no rows were removed|
-| Inconsistent categories    |price_type, has_photo, category|        |         |
+| Inconsistent categories    |price_type, has_photo, category|1. price_type contained 'Weekly', 'Daily', and 'Yearly' instead of just Monthly
+2.has_photo used the category 'Thumbnail' alongside 'Yes' and 'No'
+3. category contained a few 'home' and 'short_term' outliers|1. Mathematically converted prices to a monthly standard (e.g., Weekly * 4), then dropped the price_type column
+2. Replaced 'Thumbnail' with 'Yes'
+3. Dropped the rows for 'home'/'short_term', then dropped the category column entirely|
 | Other (Missing values & Outliers)|bathrooms, bedrooms, pets_allowed|Small amount of NaN values in structural columns, physically impossible values (0 bathrooms), and gaps in pet policies.|Dropped rows with missing bathrooms/bedrooms. Dropped rows where bathrooms == 0. Filled missing pets_allowed with "Not specified"|
 |Other (Single-Value Dominance)|currency, source, fee, is_studio|fee, is_studio	Columns contained >90% identical values (e.g., currency was 100% USD, fee was 100% No), providing no mathematical variance for analysis|Dropped these columns entirely from the dataset to reduce noise and dimensionality|
 
