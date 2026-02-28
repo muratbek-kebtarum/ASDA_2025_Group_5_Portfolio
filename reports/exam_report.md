@@ -76,13 +76,16 @@ The sample represents a fixed subset of listings and may not fully capture the d
 Therefore, the findings indicate general patterns in this dataset, but they should not be generalized to the entire housing market without further validation.
 
 ---
-## Research Question 1: xxxxxx
+## Research Question 1: In which square footage and price range is the highest density of rental inventory concentrated, and what does this reveal about the 'standard' apartment in the market?
 **RQ:** *xxxxx*
 
 
 
 ---
-## Research Question 2: xxxxxx
+## Research Question 2:  How do apartment size and bedroom count influence the price per square foot across the rental market, and at what point does 'bulk value' peak for renters?
+**RQ:** *xxxxx*
+
+## Research Question 3: Is there a 'sweet spot' in the rental market where size, location, and amenities offer the best value for money?
 **RQ:** *xxxxx*
 
 ---
