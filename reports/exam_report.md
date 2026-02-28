@@ -41,8 +41,8 @@
 ## 3. Data cleaning
 | Issue                      | Names of columns affected | Description of the issue | Action taken |
 | :---                       | :---                      | :---                     | :---         |
-| Inconsistent column labeling |                          |                         |              |
-| Wrong data types           |                           |                         |              |
+| Inconsistent column labeling |All columns (during load)|The raw CSV file had formatting issues, specifically using a semicolon (;) delimiter and cp1252 encoding, which can cause loading errors|Handled directly during the initial data loading phase by specifying sep=';' and encoding='cp1252' in pd.read_csv()|
+| Wrong data types           |time|The time column is in Unix timestamp format (integer) rather than a readable DateTime format|Left as int64 since the data is a static cross-sectional snapshot and no time-series forecasting was performed.|
 | Time gaps                  | date_time                 |                         |              |
 | Duplicates                 |                           |                         |              |
 | Inconsistent categories    |                           |                         |              |
