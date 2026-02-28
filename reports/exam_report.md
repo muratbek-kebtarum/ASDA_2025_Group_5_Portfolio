@@ -52,10 +52,10 @@
 ## 4. Descriptive statistics – numeric
 |                        | Target variable | Predictor 1 | Predictor 2 | Predictor 3 | Predictor 4 |
 | :---                   | :---           | :---        | :---        | :---        | :---        |
-| Count                  |                |             |             |             |             |
-| Mean                   |                |             |             |             |             |
-| Standard deviation     |                |             |             |             |             |
-| Min                    |                |             |             |             |             |
+| Count                  |10000|10000|9966|9993|9990|
+| Mean                   |1486.28|945.81|1.38|||
+| Standard deviation     |1076.51|655.76|0.62|             |             |
+| Min                    |200.00|101.00|1.00|             |             |
 | 25%                    |                |             |             |             |             |
 | 50%                    |                |             |             |             |             |
 | 75%                    |                |             |             |             |             |
