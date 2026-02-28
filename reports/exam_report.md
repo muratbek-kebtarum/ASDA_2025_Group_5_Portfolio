@@ -18,7 +18,7 @@
 | Format file (.csv, .txt, etc) | .csv (Comma-Separated Values, though technically formatted with a semicolon ; delimiter and cp1252/latin1 encoding) |
 | Creator of the dataset        | Originally scraped from public rental platforms (e.g., RentLingo, Listanza), uploaded to this repository by user tarummurat. |
 | Source (name)                 |  Hugging Face Datasets|
-| Source (link)                 |  https://www.google.com/search?q=https://huggingface.co/datasets/tarummurat/apartments_for_rent_classified_10K|
+| Source (link)                 |  |
 
 
 ## 2. Dataset Structure
