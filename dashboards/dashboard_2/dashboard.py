@@ -9,6 +9,7 @@
 #     "plotly",
 #     "scipy",
 #     "scikit-learn",
+#     "pyzmq>=27.1.0",
 # ]
 # ///
 
