@@ -1,4 +1,5 @@
 # ASDA_2025_Group_5_Portfolio
+### The final project report is [here.](./Final/report_group5.pdf)
 
 ### (Week 11) The report for week 11 is [here.](./reports/week_11_group_5_report.md)
 
